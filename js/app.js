@@ -170,6 +170,31 @@
     apply();
   }
 
+  /* ---------- Strain carousel: visible progress bar + arrows ---------- */
+  function mountStrains() {
+    var row = $('.strain-row'), bar = $('.strain-progress i'), arrows = $$('.strain-arrows .arrow');
+    if (!row || !bar) return;
+    function update() {
+      var max = row.scrollWidth - row.clientWidth;
+      var w = Math.min(100, row.clientWidth / row.scrollWidth * 100);
+      var left = max > 0 ? row.scrollLeft / max * (100 - w) : 0;
+      bar.style.width = w + '%';
+      bar.style.left = left + '%';
+      arrows[0].disabled = row.scrollLeft <= 2;
+      arrows[1].disabled = row.scrollLeft >= max - 2;
+    }
+    arrows.forEach(function (a) {
+      a.addEventListener('click', function () {
+        var card = $('.strain', row);
+        var step = card ? card.offsetWidth + 12 : row.clientWidth * 0.8;
+        row.scrollBy({ left: step * Number(a.dataset.dir), behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    });
+    row.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
   /* ---------- Mobile menu ---------- */
   function mountMenu() {
     var btn = $('.menu-btn'), menu = $('#mobile-menu');
@@ -206,6 +231,6 @@
     update();
   }
 
-  function init() { mountPlans(); mountGallery(); mountDisclosures(); mountStages(); mountMenu(); mountBars(); }
+  function init() { mountPlans(); mountGallery(); mountDisclosures(); mountStages(); mountStrains(); mountMenu(); mountBars(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
