@@ -215,22 +215,27 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
 
 /* ===== 05 How it works ===== */
 .how{background:var(--frost);color:var(--navy)}
-.how-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(24px,3.5vw,64px);align-items:center}
-.how-copy{display:flex;flex-direction:column;gap:16px;min-width:0}
+.how-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,3.5vw,64px);align-items:start}
+.how-copy{display:flex;flex-direction:column;gap:16px;min-width:0;position:sticky;top:88px}
 .how h2{font-size:clamp(30px,3.4vw,48px);line-height:1;letter-spacing:-.03em}
 .how .lead{font-size:clamp(15px,1.2vw,18px);line-height:1.35;font-weight:600;max-width:32ch;text-wrap:pretty}
 .beats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;border-top:1px solid var(--silver);padding-top:16px}
+.beats-mobile{display:none}
 .beat{background:transparent;border:0;padding:4px 0;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;color:var(--navy);min-height:44px}
-.beat .ic{width:40px;height:40px;border-radius:50%;background:var(--water);color:var(--navy);border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:background .3s}
+.beat .ic{width:40px;height:40px;border-radius:50%;background:var(--water);color:var(--navy);border:2px solid var(--navy);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:background .3s,color .3s,transform .3s}
 .beat.done .ic{background:var(--navy);color:var(--frost)}
+.beat.cur .ic{transform:scale(1.12);box-shadow:0 0 0 4px rgba(23,36,95,.14)}
 .beat .w{font-size:11px;font-weight:700;letter-spacing:.08em}
 .how .small{font-size:11px;color:var(--mid);line-height:1.5}
+/* The right column is tall: the pill panel stays pinned while the page scrolls through it. */
+.how-scroll{min-height:calc(520px + 150vh)}
+.how-pin{position:sticky;top:88px}
 .how-track-wrap{display:flex;justify-content:center}
 .how-track{position:relative;width:100%;max-width:480px;display:grid;grid-template-columns:auto 1fr;gap:0 20px}
 .how-track .track{position:relative;width:56px;grid-row:1 / span 4}
 .how-track .track::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--silver);transform:translateX(-50%)}
-.how-track .fill{position:absolute;left:50%;top:0;width:2px;height:var(--p);background:var(--navy);transform:translateX(-50%);transition:height .5s}
-.how-track .capsule{position:absolute;left:50%;top:var(--p);transform:translate(-50%,-50%) rotate(-18deg);width:48px;height:22px;border-radius:999px;background:linear-gradient(90deg,#17245F 0 50%,#3A4A8C 50% 100%);box-shadow:0 8px 24px rgba(23,36,95,.3);transition:top .5s}
+.how-track .fill{position:absolute;left:50%;top:0;width:2px;height:var(--p);background:var(--navy);transform:translateX(-50%);transition:height .2s linear}
+.how-track .capsule{position:absolute;left:50%;top:var(--p);transform:translate(-50%,-50%) rotate(-18deg);width:48px;height:22px;border-radius:999px;background:linear-gradient(90deg,#17245F 0 50%,#3A4A8C 50% 100%);box-shadow:0 8px 24px rgba(23,36,95,.3);transition:top .2s linear}
 .stage{background:transparent;border:0;border-bottom:1px solid var(--silver);text-align:left;color:var(--navy);display:flex;flex-direction:column;gap:4px;padding:12px 0;opacity:.4;transition:opacity .4s;min-height:84px;justify-content:center}
 .stage.on{opacity:1}
 .stage .w{font-size:clamp(17px,1.5vw,22px);font-weight:700;letter-spacing:.06em;line-height:1}
@@ -489,6 +494,16 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
   .co-summary>h2{display:none}
   .co-main{padding:24px var(--gutter) 48px}
 }
+/* Stacked "how it works": copy scrolls normally, numbers + pill panel stay pinned together */
+@media (max-width:899px){
+  .how-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .how-copy{position:static}
+  .beats-desktop{display:none}
+  .beats-mobile{display:grid;background:var(--frost);padding-bottom:6px}
+  .how-scroll{min-height:calc(480px + 130vh)}
+  .how-pin{top:72px;display:flex;flex-direction:column;gap:14px;background:var(--frost)}
+  .how-track-wrap{justify-content:flex-start}
+}
 /* Phones and small tablets: bottom bar replaces top bar */
 @media (max-width:699px){
   .topbar{display:none}
@@ -509,7 +524,8 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
   .problem-row span:last-child{grid-column:2}
   .problem-img{min-height:160px}
   .beats{gap:4px}
-  .stage{min-height:76px}
+  .stage{min-height:70px;padding:10px 0}
+  .how-pin{top:12px}
   .person-card .n{font-size:22px}
   .fields{grid-template-columns:minmax(0,1fr)}
   .faq-list{grid-template-columns:minmax(0,1fr)}

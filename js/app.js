@@ -131,30 +131,42 @@
     });
   }
 
-  /* ---------- 05 How it works: four stages that cycle until you touch them ---------- */
+  /* ---------- 05 How it works: the pill follows the page scroll while the panel is pinned ---------- */
   function mountStages() {
-    var sec = $('#how'), track = $('#how-track');
-    var stages = $$('.stage', track), beats = $$('.beat', sec);
-    var idx = 0, paused = false, byHover = false, inView = true;
+    var scroll = $('#how-scroll'), pin = $('#how-pin'), track = $('#how-track');
+    var stages = $$('.stage', track), beats = $$('.beat', $('#how'));
+    var cur = -1, ticking = false;
+    function clamp(n) { return Math.min(1, Math.max(0, n)); }
+    function pinTop() { return parseFloat(getComputedStyle(pin).top) || 0; }
+    function travel() { return scroll.offsetHeight - pin.offsetHeight; }
+    function progress() {
+      var r = scroll.getBoundingClientRect(), d = travel();
+      return d > 0 ? clamp((pinTop() - r.top) / d) : 0;
+    }
     function apply() {
-      track.style.setProperty('--p', (12 + idx * 25) + '%');
+      ticking = false;
+      var t = progress();
+      track.style.setProperty('--p', (12 + t * 75) + '%');
+      var idx = Math.round(t * 3);
+      if (idx === cur) return;
+      cur = idx;
       stages.forEach(function (s, i) { s.classList.toggle('on', i <= idx); });
       beats.forEach(function (b, i) {
-        b.classList.toggle('done', i <= idx);
-        b.setAttribute('aria-pressed', i === idx);
+        var n = i % 4;
+        b.classList.toggle('done', n <= idx);
+        b.classList.toggle('cur', n === idx);
+        b.setAttribute('aria-pressed', n === idx);
       });
     }
-    function pick(i) { idx = i; paused = true; byHover = false; apply(); }
-    stages.forEach(function (s, i) { s.addEventListener('click', function () { pick(i); }); });
-    beats.forEach(function (b, i) { b.addEventListener('click', function () { pick(i); }); });
-    sec.addEventListener('mouseenter', function () { if (!paused) { paused = true; byHover = true; } });
-    sec.addEventListener('mouseleave', function () { if (byHover) { paused = false; byHover = false; } });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { inView = es[0].isIntersecting; }, { threshold: 0.2 }).observe(sec);
+    function req() { if (!ticking) { ticking = true; requestAnimationFrame(apply); } }
+    function jump(i) {
+      var y = window.scrollY + scroll.getBoundingClientRect().top - pinTop() + (i / 3) * travel() + 1;
+      window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
     }
-    if (!reduceMotion) {
-      setInterval(function () { if (!paused && inView) { idx = (idx + 1) % 4; apply(); } }, 2800);
-    }
+    stages.forEach(function (s, i) { s.addEventListener('click', function () { jump(i); }); });
+    beats.forEach(function (b, i) { b.addEventListener('click', function () { jump(i % 4); }); });
+    window.addEventListener('scroll', req, { passive: true });
+    window.addEventListener('resize', req);
     apply();
   }
 

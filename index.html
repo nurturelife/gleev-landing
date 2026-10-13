@@ -182,29 +182,39 @@
   </div>
 </section>
 
-<!-- 05 How it works -->
+<!-- 05 How it works: the pill follows the page scroll while the section is pinned -->
 <section class="sec how" id="how">
   <div class="how-grid">
     <div class="how-copy">
       <span class="eyebrow">05 · P3X TECHNOLOGY</span>
       <h2>Four jobs. One capsule. P3X Technology.</h2>
       <p class="lead">Most gut supplements stop at two.</p>
-      <div class="beats" id="beats">
+      <div class="beats beats-desktop" aria-label="The four jobs">
         <button type="button" class="beat" aria-pressed="true"><span class="ic">01</span><span class="w">DELIVER</span></button>
         <button type="button" class="beat" aria-pressed="false"><span class="ic">02</span><span class="w">FEED</span></button>
         <button type="button" class="beat" aria-pressed="false"><span class="ic">03</span><span class="w">REPLENISH</span></button>
         <button type="button" class="beat" aria-pressed="false"><span class="ic">04</span><span class="w">PROTECT</span></button>
       </div>
-      <span class="small">Illustration of the capsule's design, not a recording. Tap a step to pause.</span>
+      <span class="small">Illustration of the capsule's design, not a recording. Scroll, or tap a step to jump to it.</span>
       <div><a class="btn-sm" href="#plans">Start my plan</a></div>
     </div>
-    <div class="how-track-wrap">
-      <div class="how-track" id="how-track" style="--p:12%">
-        <div class="track"><div class="fill"></div><div class="capsule"></div></div>
-        <button type="button" class="stage on"><span class="w">DELIVER</span><span class="x">The delayed-release capsule carries everything past the stomach.</span></button>
-        <button type="button" class="stage"><span class="w">FEED</span><span class="x">100mg of chicory inulin reaches the colon and feeds the bacteria you want more of, and helps the cultures stay robust on the way.</span></button>
-        <button type="button" class="stage"><span class="w">REPLENISH</span><span class="x">70 billion live cultures across eight named strains, at the amounts on the label.</span></button>
-        <button type="button" class="stage"><span class="w">PROTECT</span><span class="x">170mg of a postbiotic that works on the gut whether or not anything survives, with a medical track record.</span></button>
+    <div class="how-scroll" id="how-scroll">
+      <div class="how-pin" id="how-pin">
+        <div class="beats beats-mobile" aria-label="The four jobs">
+        <button type="button" class="beat" aria-pressed="true"><span class="ic">01</span><span class="w">DELIVER</span></button>
+        <button type="button" class="beat" aria-pressed="false"><span class="ic">02</span><span class="w">FEED</span></button>
+        <button type="button" class="beat" aria-pressed="false"><span class="ic">03</span><span class="w">REPLENISH</span></button>
+        <button type="button" class="beat" aria-pressed="false"><span class="ic">04</span><span class="w">PROTECT</span></button>
+      </div>
+        <div class="how-track-wrap">
+          <div class="how-track" id="how-track" style="--p:12%">
+            <div class="track"><div class="fill"></div><div class="capsule"></div></div>
+            <button type="button" class="stage on"><span class="w">DELIVER</span><span class="x">The delayed-release capsule carries everything past the stomach.</span></button>
+            <button type="button" class="stage"><span class="w">FEED</span><span class="x">100mg of chicory inulin reaches the colon and feeds the bacteria you want more of, and helps the cultures stay robust on the way.</span></button>
+            <button type="button" class="stage"><span class="w">REPLENISH</span><span class="x">70 billion live cultures across eight named strains, at the amounts on the label.</span></button>
+            <button type="button" class="stage"><span class="w">PROTECT</span><span class="x">170mg of a postbiotic that works on the gut whether or not anything survives, with a medical track record.</span></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
