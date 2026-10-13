@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Checkout · Gleev</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#17245F">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<div class="co-page">
+  <header class="co-head">
+    <a class="brand" href="index.html" aria-label="Back to Gleev"><img class="brand-mark" src="assets/logo.svg" alt="" width="24" height="24"><span class="brand-word">GLEEV</span></a>
+    <span class="secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>SECURE CHECKOUT</span>
+  </header>
+
+  <div class="co-wrap" id="co-wrap">
+    <main class="co-main">
+      <nav class="crumbs" aria-label="Checkout steps"><a href="index.html#plans">Basket</a><i>›</i><b>Information</b><i>›</i><span>Delivery</span><i>›</i><span>Payment</span></nav>
+
+      <form class="co-form" id="co-form" data-klaviyo-form data-source="checkout_waitlist" novalidate>
+        <section class="co-section">
+          <h2>Contact</h2>
+          <div class="fields">
+            <label class="fld full">Email<input type="email" name="email" id="co-email" inputmode="email" autocomplete="email" placeholder="you@example.com" required></label>
+          </div>
+        </section>
+        <section class="co-section">
+          <h2>Your details</h2>
+          <div class="fields">
+            <label class="fld">First name<input type="text" name="first_name" autocomplete="given-name" required></label>
+            <label class="fld">Last name<input type="text" name="last_name" autocomplete="family-name"></label>
+          </div>
+        </section>
+        <label class="consent"><input type="checkbox" name="consent" required><span>Email me about my order and Gleev launch updates. I can unsubscribe at any time. See the <a href="legal/privacy.html"><u>privacy policy</u></a>.</span></label>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="form-msg" role="alert" aria-live="polite"></p>
+        <div class="co-actions">
+          <a href="index.html#plans">← Return to plans</a>
+          <button class="btn" type="submit" data-busy="Continuing…">Continue to delivery</button>
+        </div>
+      </form>
+
+      <div class="co-foot"><a href="legal/terms.html">Terms</a><a href="legal/privacy.html">Privacy</a></div>
+    </main>
+
+    <aside class="co-summary" id="co-summary" aria-label="Order summary">
+      <button class="co-toggle" type="button" aria-expanded="false" aria-controls="co-body"><span>Show order summary</span><b id="co-toggle-total"></b></button>
+      <h2>Order summary</h2>
+      <div class="co-body" id="co-body">
+        <div class="co-line">
+          <div class="co-thumb"><img src="assets/img/gallery-1-hero.webp" alt="" width="68" height="68"><span class="q" id="co-qty">1</span></div>
+          <div class="nm"><b>Gleev 360° Biom</b><span id="co-plan"></span><span id="co-renew"></span></div>
+          <span class="pr" id="co-price"></span>
+        </div>
+        <div class="co-sum">
+          <div><span class="muted">Subtotal</span><span id="co-sub"></span></div>
+          <div><span class="muted">Delivery</span><span>Free</span></div>
+          <div class="total"><span>Total</span><span><small>GBP</small><span id="co-total"></span></span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <main class="thanks" id="thanks" hidden aria-live="polite">
+    <div class="tick" aria-hidden="true">✓</div>
+    <h1 tabindex="-1">Thanks for your interest. You're a bit early.</h1>
+    <p>Gleev isn't available to order just yet. We've saved your details and we'll email <b id="thanks-email"></b> as soon as you can buy.</p>
+    <div class="sel"><small>YOUR SELECTION</small><b id="thanks-plan"></b><span id="thanks-price"></span></div>
+    <a class="btn btn-inline" href="index.html">Back to Gleev</a>
+  </main>
+</div>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/klaviyo.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>
