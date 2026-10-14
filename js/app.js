@@ -96,10 +96,35 @@
   /* ---------- Findings, tabs, FAQ (one open at a time) ---------- */
   function mountDisclosures() {
     var findings = $$('#findings .finding');
+    function setFinding(f, on) {
+      f.setAttribute('aria-expanded', on);
+      $('.sign', f).textContent = on ? '\u2212' : '+';
+      $('.more', f).hidden = !on;
+    }
+    // Keep the whole "Scientist formulated" section tall enough for the biggest open card,
+    // so opening a card never changes the page height. Content is centred vertically.
+    function fitScience() {
+      var grid = $('.science-grid');
+      if (!grid || !findings.length) return;
+      var was = findings.map(function (f) { return f.getAttribute('aria-expanded') === 'true'; });
+      grid.style.minHeight = '';
+      var max = grid.offsetHeight;
+      findings.forEach(function (f) {
+        findings.forEach(function (o) { setFinding(o, o === f); });
+        max = Math.max(max, grid.offsetHeight);
+      });
+      findings.forEach(function (o, i) { setFinding(o, was[i]); });
+      grid.style.minHeight = max + 'px';
+    }
+    var fitTimer;
+    window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fitScience, 150); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitScience);
+    window.addEventListener('load', fitScience);
+    fitScience();
     findings.forEach(function (f) {
       f.addEventListener('click', function () {
         var open = f.getAttribute('aria-expanded') !== 'true';
-        findings.forEach(function (o) { o.setAttribute('aria-expanded', o === f && open); });
+        findings.forEach(function (o) { setFinding(o, o === f && open); });
       });
     });
 
@@ -134,10 +159,9 @@
     function clamp(n) { return Math.min(1, Math.max(0, n)); }
     function pinTop() { return parseFloat(getComputedStyle(pin).top) || 0; }
     function travel() { return scroll.offsetHeight - pin.offsetHeight; }
-    // Keep the pinned stretch short enough that the top of the next section stays on screen below the panel.
+    // A short, fixed pinned stretch: the pill moves quickly and the next section follows straight after.
     function layout() {
-      var peek = window.innerWidth < 700 ? 230 : 160;
-      var t = Math.max(150, window.innerHeight - pinTop() - pin.offsetHeight - peek);
+      var t = window.innerWidth < 700 ? 130 : 170;
       scroll.style.minHeight = (pin.offsetHeight + t) + 'px';
     }
     function progress() {

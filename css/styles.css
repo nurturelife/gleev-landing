@@ -33,6 +33,7 @@ section{scroll-margin-top:56px}
 h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
 .sec{padding:var(--pad-y) var(--gutter)}
 .push{margin-top:auto;padding-top:8px}
+.science .push{margin-top:0}
 .btn{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--navy);color:var(--frost);border:0;padding:13px 24px;border-radius:8px;font-size:15px;font-weight:700;min-height:50px;letter-spacing:-.01em;text-align:center;text-wrap:balance;transition:background .2s}
 .btn:hover{background:var(--deep);color:var(--frost)}
 .btn[disabled]{opacity:.6;cursor:default}
@@ -158,7 +159,7 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
 
 /* ===== 03 Science ===== */
 .science{background:var(--frost);color:var(--navy)}
-.science-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(24px,3vw,48px);align-items:stretch}
+.science-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(24px,3vw,48px);align-items:center}
 .science-copy{display:flex;flex-direction:column;gap:16px;min-width:0}
 .science h2{font-size:clamp(30px,3.6vw,54px);line-height:.96;letter-spacing:-.04em;text-transform:uppercase;text-wrap:balance}
 .science .lead{font-size:clamp(15px,1.2vw,18px);line-height:1.4;font-weight:600;max-width:42ch;text-wrap:pretty}
@@ -174,19 +175,15 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
 .person-card .mono{font-size:11px;color:var(--silver);font-family:var(--mono);line-height:1.4}
 .person-card .quote{border-top:1px solid rgba(201,205,214,.3);padding-top:10px}
 .person-card .tag{font-size:12px;color:var(--water)}
-.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;align-items:stretch}
-.finding{text-align:left;background:var(--mist);color:var(--navy);border:1.5px solid transparent;border-radius:16px;padding:18px;display:grid;align-items:center;min-height:44px;transition:border-color .2s,background .2s}
-.finding .face{grid-area:1/1;display:flex;flex-direction:column;gap:10px;justify-content:center}
-.finding .face-open{visibility:hidden}
-.finding[aria-expanded="true"] .face-open{visibility:visible}
-.finding[aria-expanded="true"] .face-closed{visibility:hidden}
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;align-items:start}
+.finding{text-align:left;background:var(--mist);color:var(--navy);border:1.5px solid transparent;border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-height:44px;transition:border-color .2s,background .2s}
 .finding:hover{border-color:var(--navy)}
 .finding[aria-expanded="true"]{background:var(--water);border-color:var(--navy)}
 .finding .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .finding .big{font-size:clamp(22px,1.9vw,28px);font-weight:700;letter-spacing:-.03em;line-height:1}
 .finding .sign{flex:none;width:24px;height:24px;border-radius:50%;border:1px solid var(--silver);display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;color:var(--mid)}
 .finding .line{font-size:14px;line-height:1.35;font-weight:600;text-wrap:pretty}
-.finding .detail{font-size:13px;line-height:1.45;border-top:1px solid var(--silver);padding-top:8px;text-wrap:pretty}
+.finding .more{display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.45;border-top:1px solid var(--silver);padding-top:8px;text-wrap:pretty}
 .finding .ref{font-size:11px;color:var(--mid)}
 
 /* ===== 04 Journey ===== */
@@ -232,7 +229,8 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
 .beat .w{font-size:11px;font-weight:700;letter-spacing:.08em}
 .how .small{font-size:11px;color:var(--mid);line-height:1.5}
 /* The right column is tall: the pill panel stays pinned while the page scrolls through it. */
-.how-scroll{min-height:calc(400px + 45vh)}
+.how{padding-bottom:16px}
+.how-scroll{min-height:calc(400px + 170px)}
 .how-pin{position:sticky;top:88px}
 .how-track-wrap{display:flex;justify-content:center}
 .how-track{position:relative;width:100%;max-width:480px;display:grid;grid-template-columns:auto 1fr;gap:0 20px}
@@ -340,6 +338,7 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
 .review b{font-size:16px;line-height:1.25;font-weight:700;letter-spacing:-.01em;text-wrap:pretty}
 .review p{font-size:14px;line-height:1.5;text-wrap:pretty}
 .review .by{margin-top:auto;padding-top:6px;font-size:12px;font-weight:600;color:var(--mid)}
+.sample-note{font-size:12px;line-height:1.5;color:var(--mid);font-style:italic}
 .review-nav{display:none;padding:0;margin-top:14px}
 .review-nav .strain-progress{background:rgba(23,36,95,.14)}
 .review-nav .strain-progress i{background:var(--navy)}
@@ -535,7 +534,7 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
   .how-copy{position:static}
   .beats-desktop{display:none}
   .beats-mobile{display:grid;background:var(--frost);padding-bottom:6px}
-  .how-scroll{min-height:calc(480px + 30vh)}
+  .how-scroll{min-height:calc(480px + 130px)}
   .how-pin{top:72px;display:flex;flex-direction:column;gap:14px;background:var(--frost)}
   .how-track-wrap{justify-content:flex-start}
 }
