@@ -99,12 +99,7 @@
     findings.forEach(function (f) {
       f.addEventListener('click', function () {
         var open = f.getAttribute('aria-expanded') !== 'true';
-        findings.forEach(function (o) {
-          var on = o === f && open;
-          o.setAttribute('aria-expanded', on);
-          $('.sign', o).textContent = on ? '−' : '+';
-          $('.more', o).hidden = !on;
-        });
+        findings.forEach(function (o) { o.setAttribute('aria-expanded', o === f && open); });
       });
     });
 
@@ -112,7 +107,7 @@
     tabs.forEach(function (t) {
       t.addEventListener('click', function () {
         tabs.forEach(function (o) { o.setAttribute('aria-selected', o === t); });
-        panels.forEach(function (p) { p.hidden = p.dataset.panel !== t.dataset.tab; });
+        panels.forEach(function (p) { p.classList.toggle('is-on', p.dataset.panel === t.dataset.tab); });
       });
     });
 
@@ -139,6 +134,12 @@
     function clamp(n) { return Math.min(1, Math.max(0, n)); }
     function pinTop() { return parseFloat(getComputedStyle(pin).top) || 0; }
     function travel() { return scroll.offsetHeight - pin.offsetHeight; }
+    // Keep the pinned stretch short enough that the top of the next section stays on screen below the panel.
+    function layout() {
+      var peek = window.innerWidth < 700 ? 230 : 160;
+      var t = Math.max(150, window.innerHeight - pinTop() - pin.offsetHeight - peek);
+      scroll.style.minHeight = (pin.offsetHeight + t) + 'px';
+    }
     function progress() {
       var r = scroll.getBoundingClientRect(), d = travel();
       return d > 0 ? clamp((pinTop() - r.top) / d) : 0;
@@ -166,33 +167,36 @@
     stages.forEach(function (s, i) { s.addEventListener('click', function () { jump(i); }); });
     beats.forEach(function (b, i) { b.addEventListener('click', function () { jump(i % 4); }); });
     window.addEventListener('scroll', req, { passive: true });
-    window.addEventListener('resize', req);
+    window.addEventListener('resize', function () { layout(); req(); });
+    layout();
     apply();
   }
 
-  /* ---------- Strain carousel: visible progress bar + arrows ---------- */
-  function mountStrains() {
-    var row = $('.strain-row'), bar = $('.strain-progress i'), arrows = $$('.strain-arrows .arrow');
-    if (!row || !bar) return;
-    function update() {
-      var max = row.scrollWidth - row.clientWidth;
-      var w = Math.min(100, row.clientWidth / row.scrollWidth * 100);
-      var left = max > 0 ? row.scrollLeft / max * (100 - w) : 0;
-      bar.style.width = w + '%';
-      bar.style.left = left + '%';
-      arrows[0].disabled = row.scrollLeft <= 2;
-      arrows[1].disabled = row.scrollLeft >= max - 2;
-    }
-    arrows.forEach(function (a) {
-      a.addEventListener('click', function () {
-        var card = $('.strain', row);
-        var step = card ? card.offsetWidth + 12 : row.clientWidth * 0.8;
-        row.scrollBy({ left: step * Number(a.dataset.dir), behavior: reduceMotion ? 'auto' : 'smooth' });
+  /* ---------- Sideways rows (strains, reviews): visible progress bar + arrows ---------- */
+  function mountRows() {
+    $$('.strain-row, .review-row').forEach(function (row) {
+      var nav = row.nextElementSibling;
+      if (!nav || !nav.classList.contains('strain-nav')) return;
+      var bar = $('.strain-progress i', nav), arrows = $$('.arrow', nav);
+      function update() {
+        var max = row.scrollWidth - row.clientWidth;
+        var w = row.scrollWidth ? Math.min(100, row.clientWidth / row.scrollWidth * 100) : 100;
+        bar.style.width = w + '%';
+        bar.style.left = (max > 0 ? row.scrollLeft / max * (100 - w) : 0) + '%';
+        arrows[0].disabled = row.scrollLeft <= 2;
+        arrows[1].disabled = row.scrollLeft >= max - 2;
+      }
+      arrows.forEach(function (a) {
+        a.addEventListener('click', function () {
+          var card = row.firstElementChild;
+          var step = card ? card.offsetWidth + 12 : row.clientWidth * 0.8;
+          row.scrollBy({ left: step * Number(a.dataset.dir), behavior: reduceMotion ? 'auto' : 'smooth' });
+        });
       });
+      row.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
     });
-    row.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    update();
   }
 
   /* ---------- Mobile menu ---------- */
@@ -231,6 +235,6 @@
     update();
   }
 
-  function init() { mountPlans(); mountGallery(); mountDisclosures(); mountStages(); mountStrains(); mountMenu(); mountBars(); }
+  function init() { mountPlans(); mountGallery(); mountDisclosures(); mountStages(); mountRows(); mountMenu(); mountBars(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
