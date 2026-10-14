@@ -159,7 +159,7 @@
     var stages = $$('.stage', track), beats = $$('.beat', $('#how'));
     var cur = -1, ticking = false;
     function clamp(n) { return Math.min(1, Math.max(0, n)); }
-    function range() { var vh = window.innerHeight; return { start: vh * 0.9, end: vh * 0.25 }; }
+    function range() { var vh = window.innerHeight; return { start: vh * 0.6, end: vh * 0.25 }; }
     function progress() {
       var r = track.getBoundingClientRect(), m = range();
       return clamp((m.start - r.top) / (m.start - m.end));
