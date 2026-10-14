@@ -151,22 +151,18 @@
     });
   }
 
-  /* ---------- 05 How it works: the pill follows the page scroll while the panel is pinned ---------- */
+  /* ---------- 05 How it works: the pill follows the natural scroll (no pinning) ---------- */
+  // Pill is on DELIVER when the panel first comes into view and on PROTECT once the panel
+  // has scrolled up into the top part of the screen. Scrolling stays completely normal.
   function mountStages() {
-    var scroll = $('#how-scroll'), pin = $('#how-pin'), track = $('#how-track');
+    var track = $('#how-track');
     var stages = $$('.stage', track), beats = $$('.beat', $('#how'));
     var cur = -1, ticking = false;
     function clamp(n) { return Math.min(1, Math.max(0, n)); }
-    function pinTop() { return parseFloat(getComputedStyle(pin).top) || 0; }
-    function travel() { return scroll.offsetHeight - pin.offsetHeight; }
-    // A short, fixed pinned stretch: the pill moves quickly and the next section follows straight after.
-    function layout() {
-      var t = window.innerWidth < 700 ? 130 : 170;
-      scroll.style.minHeight = (pin.offsetHeight + t) + 'px';
-    }
+    function range() { var vh = window.innerHeight; return { start: vh * 0.9, end: vh * 0.25 }; }
     function progress() {
-      var r = scroll.getBoundingClientRect(), d = travel();
-      return d > 0 ? clamp((pinTop() - r.top) / d) : 0;
+      var r = track.getBoundingClientRect(), m = range();
+      return clamp((m.start - r.top) / (m.start - m.end));
     }
     function apply() {
       ticking = false;
@@ -185,14 +181,14 @@
     }
     function req() { if (!ticking) { ticking = true; requestAnimationFrame(apply); } }
     function jump(i) {
-      var y = window.scrollY + scroll.getBoundingClientRect().top - pinTop() + (i / 3) * travel() + 1;
-      window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
+      var m = range(), r = track.getBoundingClientRect();
+      var wantTop = m.start - (i / 3) * (m.start - m.end);
+      window.scrollTo({ top: window.scrollY + r.top - wantTop + 1, behavior: reduceMotion ? 'auto' : 'smooth' });
     }
     stages.forEach(function (s, i) { s.addEventListener('click', function () { jump(i); }); });
     beats.forEach(function (b, i) { b.addEventListener('click', function () { jump(i % 4); }); });
     window.addEventListener('scroll', req, { passive: true });
-    window.addEventListener('resize', function () { layout(); req(); });
-    layout();
+    window.addEventListener('resize', req);
     apply();
   }
 

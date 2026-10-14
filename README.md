@@ -17,6 +17,10 @@ js/app.js         page behaviour
 assets/           images and fonts
 ```
 
+## Before every commit
+
+Run `python3 tools/bump_version.py`. It stamps the CSS/JS links with a fresh `?v=` value so visitors never get a new page with old scripts (GitHub Pages caches files for about 10 minutes).
+
 ## Run locally
 
 ```bash
