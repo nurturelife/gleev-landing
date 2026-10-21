@@ -51,7 +51,7 @@ Google Analytics 4 (`G-86W1T4YRWF`) is in every page `<head>`, but it **only loa
 
 ## Content still to supply
 
-Search for `PLACEHOLDER` / `PLATZHALTER` in the strings and for `tbc` in `src/legal/`: Tim's credentials and quote, strain studies for four strains, the euro price note, company details, retention periods and Impressum details. Pictures still missing: the routine section.
+Search for `PLACEHOLDER` / `PLATZHALTER` in the strings and for `tbc` in `src/legal/`: Tim's credentials and quote, the euro price note, company details, retention periods and Impressum details. Pictures still missing: the routine section.
 
 ## Run locally
 
