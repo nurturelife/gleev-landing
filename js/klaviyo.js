@@ -35,7 +35,7 @@
 
   function subscribe(email, opts) {
     opts = opts || {};
-    var properties = Object.assign({ source: opts.source || 'website', page: location.pathname }, opts.properties || {});
+    var properties = Object.assign({ source: opts.source || 'website', page: location.pathname, language: (window.GLEEV_L && window.GLEEV_L.lang) || document.documentElement.lang || 'en' }, opts.properties || {});
     rememberEmail(email);
     return post('subscriptions', {
       data: {
@@ -68,6 +68,7 @@
 
   // Wire every <form data-klaviyo-form data-source="...">
   function bindForms() {
+    var M = (window.GLEEV_L && window.GLEEV_L.msg) || {};
     var boundAt = Date.now();
     document.querySelectorAll('form[data-klaviyo-form]').forEach(function (form) {
       var msg = form.querySelector('.form-msg');
@@ -81,21 +82,21 @@
         var last = form.elements.last_name ? form.elements.last_name.value.trim() : '';
         // Spam traps: a filled honeypot, or a submit faster than a human could manage. Bots get a fake success.
         var botLike = (form.elements.company && form.elements.company.value) || (Date.now() - boundAt < 2000);
-        if (botLike) { say(form.dataset.success || "Thanks! You're on the list.", 'ok'); return; }
-        if (!validEmail(email)) { say('Please enter a valid email address.', 'err'); form.elements.email.focus(); return; }
-        if (form.elements.first_name && !first) { say('Please enter your first name.', 'err'); form.elements.first_name.focus(); return; }
-        if (consent && !consent.checked) { say('Please tick the box to agree to receive emails.', 'err'); return; }
+        if (botLike) { say(M.thanks, 'ok'); return; }
+        if (!validEmail(email)) { say(M.email, 'err'); form.elements.email.focus(); return; }
+        if (form.elements.first_name && !first) { say(M.first, 'err'); form.elements.first_name.focus(); return; }
+        if (consent && !consent.checked) { say(M.consent, 'err'); return; }
         var label = btn ? btn.textContent : '';
-        if (btn) { btn.disabled = true; btn.textContent = btn.dataset.busy || 'Sending…'; }
+        if (btn) { btn.disabled = true; btn.textContent = btn.dataset.busy || M.sending; }
         say('');
         var plan = window.GleevCart && window.GleevCart.summary();
         subscribe(email, { source: form.dataset.source, firstName: first, lastName: last, properties: plan ? { plan: plan.planId, plan_name: plan.name, quantity: plan.qty, plan_total: plan.total } : {} })
           .then(function () {
-            say(form.dataset.success || "Thanks! You're on the list.", 'ok');
+            say(M.thanks, 'ok');
             form.dispatchEvent(new CustomEvent('gleev:subscribed', { bubbles: true, detail: { email: email } }));
             if (form.dataset.source === 'footer') form.reset();
           })
-          .catch(function () { say('Something went wrong. Please try again in a moment.', 'err'); })
+          .catch(function () { say(M.error, 'err'); })
           .then(function () { if (btn) { btn.disabled = false; btn.textContent = label; } });
       });
     });

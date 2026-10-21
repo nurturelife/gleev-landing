@@ -8,11 +8,31 @@
 <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="../css/styles.css?v=20261021174845">
+<link rel="stylesheet" href="../css/styles.css?v=20261021181700">
+<script>document.documentElement.classList.add('js')</script>
+<script>
+/* Google Analytics 4 (G-86W1T4YRWF). Nothing is sent to Google, and no cookies are set,
+   until the visitor accepts analytics in the cookie banner (js/common.js). */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.gleevLoadAnalytics = function () {
+  if (window.gleevAnalyticsLoaded) return;
+  window.gleevAnalyticsLoaded = true;
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-86W1T4YRWF';
+  document.head.appendChild(s);
+  gtag('js', new Date());
+  gtag('config', 'G-86W1T4YRWF');
+};
+try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadAnalytics(); } catch (e) {}
+</script>
 </head>
 <body>
 <div class="page">
-  <nav class="nav" aria-label="Main"><a class="brand" href="../index.html" aria-label="Gleev home"><img class="brand-logo" src="../assets/brand/logo-full.svg" alt="Gleev" width="151" height="26"></a><a href="../index.html">Back to site</a></nav>
+  <nav class="nav" aria-label="Main"><a class="brand" href="../index.html" aria-label="Gleev home"><img class="brand-logo" src="../assets/brand/logo-full.svg" alt="Gleev" width="151" height="26"></a><div class="nav-right"><span class="lang-switch" role="group" aria-label="Language"><a href="privacy.html" hreflang="en" lang="en" data-lang="en" class="is-current" aria-current="true">EN</a><span aria-hidden="true">|</span><a href="../de/legal/privacy.html" hreflang="de" lang="de" data-lang="de">DE</a></span><a href="../index.html">Back to site</a></div></nav>
   <main class="doc">
     <h1>Privacy</h1>
     <p class="draft-note">DRAFT, pending review by the client and their legal adviser. Items highlighted <span class="tbc">[like this]</span> still need to be confirmed. Last updated: 21 October 2026.</p>
@@ -24,9 +44,10 @@
 
     <h2>What we collect</h2>
     <ul>
-      <li><b>At the checkout page:</b> your email address, first name, last name (optional) and the plan you selected (its name, quantity and price).</li>
-      <li><b>If you sign up to the newsletter in the page footer:</b> your email address.</li>
+      <li><b>At the checkout page:</b> your email address, first name, last name (optional), the plan you selected (its name, quantity and price) and the language of the page you used.</li>
+      <li><b>If you sign up to the newsletter in the page footer:</b> your email address and the language of the page.</li>
       <li><b>When you sign up:</b> a record of the sign-up, such as the time and technical details our email provider logs (for example your IP address).</li>
+      <li><b>If you accept analytics cookies:</b> information about how you use the site, such as the pages you visit, your approximate location, device and browser (see "Cookies and analytics" below).</li>
     </ul>
     <p>We do not ask for card details, delivery addresses or any payment information, and we do not collect them.</p>
 
@@ -34,20 +55,23 @@
     <ul>
       <li><b>To tell you when Gleev is available to buy.</b> You ask us to do this by giving us your details at the checkout page. We use them only for that purpose and <b>we do not use them for marketing</b>. Legal basis: taking steps at your request before a purchase, and our legitimate interest in answering your interest in the product <span class="tbc">[legal adviser to confirm the basis]</span>.</li>
       <li><b>To send you our newsletter, if you subscribe in the footer.</b> Legal basis: your consent, which you give by ticking the box. You can withdraw it at any time and every email has an unsubscribe link.</li>
+      <li><b>To understand how the site is used and improve it (analytics).</b> Legal basis: your consent, given in the cookie banner. You can change your mind at any time with "Cookie settings" in the page footer.</li>
     </ul>
 
     <h2>Who processes your data</h2>
     <ul>
       <li><b>Klaviyo, Inc.</b>, our email service provider, stores sign-ups and sends our emails. Your data may be transferred to the United States, protected by <span class="tbc">[transfer safeguard, e.g. UK/EU Data Privacy Framework or standard contractual clauses]</span>.</li>
+      <li><b>Google LLC / Google Ireland Limited</b> provides Google Analytics, but only if you accept analytics cookies. Data may be transferred to the United States <span class="tbc">[transfer safeguard]</span>.</li>
       <li><b>GitHub, Inc.</b> hosts this website and may process technical data such as your IP address when you visit.</li>
     </ul>
     <p>We do not sell your data.</p>
 
-    <h2>Cookies and browser storage</h2>
-    <p>We do not set cookies and do not use advertising or analytics trackers. Your browser's local storage keeps your basket and the email address you typed, on your device only, so the page remembers them if you reload. You can clear it in your browser settings. <span class="tbc">[Update this section if analytics is added.]</span></p>
+    <h2>Cookies and analytics</h2>
+    <p>When you first visit, a banner asks whether you accept analytics cookies. <b>Until you accept, we do not load Google Analytics and no analytics cookies are set.</b> If you accept, Google Analytics sets cookies (named <code>_ga</code> and <code>_ga_…</code>) to measure visits. You can decline, and you can change your choice at any time with "Cookie settings" in the footer; declining removes the cookies.</p>
+    <p>Separately, your browser's local storage keeps your basket, the email address you typed, your language choice and your cookie choice, on your device only. These are needed for the site to work as you expect. You can clear them in your browser settings.</p>
 
     <h2>How long we keep it</h2>
-    <p>Details given at the checkout page are kept until we have told you that Gleev is available and for <span class="tbc">[retention period, e.g. 6 months]</span> after that, unless you ask us to delete them sooner. Newsletter details are kept until you unsubscribe.</p>
+    <p>Details given at the checkout page are kept until we have told you that Gleev is available and for <span class="tbc">[retention period, e.g. 6 months]</span> after that, unless you ask us to delete them sooner. Newsletter details are kept until you unsubscribe. Analytics data is kept for <span class="tbc">[retention period set in Google Analytics, e.g. 14 months]</span>.</p>
 
     <h2>Your rights</h2>
     <p>You can ask us to access, correct or delete your data, restrict or object to its use, or receive a copy of it, and you can withdraw consent at any time. Contact us at <a href="mailto:hi@gleevhealth.com">hi@gleevhealth.com</a>. You also have the right to complain to the UK Information Commissioner's Office (ico.org.uk) or your local data protection authority.</p>
@@ -56,5 +80,7 @@
     <p>We may update this notice and will change the date above when we do.</p>
   </main>
 </div>
+<script src="../js/lang/en.js?v=20261021181700"></script>
+<script src="../js/common.js?v=20261021181700"></script>
 </body>
 </html>

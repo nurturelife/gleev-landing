@@ -10,14 +10,33 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin.woff2" crossorigin>
-<link rel="stylesheet" href="css/styles.css?v=20261021174845">
+<link rel="stylesheet" href="css/styles.css?v=20261021181700">
 <script>document.documentElement.classList.add('js')</script>
+<script>
+/* Google Analytics 4 (G-86W1T4YRWF). Nothing is sent to Google, and no cookies are set,
+   until the visitor accepts analytics in the cookie banner (js/common.js). */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.gleevLoadAnalytics = function () {
+  if (window.gleevAnalyticsLoaded) return;
+  window.gleevAnalyticsLoaded = true;
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-86W1T4YRWF';
+  document.head.appendChild(s);
+  gtag('js', new Date());
+  gtag('config', 'G-86W1T4YRWF');
+};
+try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadAnalytics(); } catch (e) {}
+</script>
 </head>
 <body>
 <div class="co-page">
   <header class="co-head">
     <a class="brand" href="index.html" aria-label="Back to Gleev"><img class="brand-logo" src="assets/brand/logo-full.svg" alt="Gleev" width="151" height="26"></a>
-    <span class="secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>SECURE CHECKOUT</span>
+    <div class="co-head-r"><span class="secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>SECURE CHECKOUT</span><span class="lang-switch" role="group" aria-label="Language"><a href="checkout.html" hreflang="en" lang="en" data-lang="en" class="is-current" aria-current="true">EN</a><span aria-hidden="true">|</span><a href="de/checkout.html" hreflang="de" lang="de" data-lang="de">DE</a></span></div>
   </header>
 
   <div class="co-wrap" id="co-wrap">
@@ -75,10 +94,12 @@
     <a class="btn btn-inline" href="index.html">Back to Gleev</a>
   </main>
 </div>
-<script src="js/config.js?v=20261021174845"></script>
-<script src="js/data.js?v=20261021174845"></script>
-<script src="js/klaviyo.js?v=20261021174845"></script>
-<script src="js/cart.js?v=20261021174845"></script>
-<script src="js/checkout.js?v=20261021174845"></script>
+<script src="js/lang/en.js?v=20261021181700"></script>
+<script src="js/config.js?v=20261021181700"></script>
+<script src="js/data.js?v=20261021181700"></script>
+<script src="js/klaviyo.js?v=20261021181700"></script>
+<script src="js/cart.js?v=20261021181700"></script>
+<script src="js/common.js?v=20261021181700"></script>
+<script src="js/checkout.js?v=20261021181700"></script>
 </body>
 </html>

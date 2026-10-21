@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kasse · Gleev</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#17245F">
+<link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="../css/styles.css?v=20261021181700">
+<script>document.documentElement.classList.add('js')</script>
+<script>
+/* Google Analytics 4 (G-86W1T4YRWF). Nothing is sent to Google, and no cookies are set,
+   until the visitor accepts analytics in the cookie banner (js/common.js). */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.gleevLoadAnalytics = function () {
+  if (window.gleevAnalyticsLoaded) return;
+  window.gleevAnalyticsLoaded = true;
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-86W1T4YRWF';
+  document.head.appendChild(s);
+  gtag('js', new Date());
+  gtag('config', 'G-86W1T4YRWF');
+};
+try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadAnalytics(); } catch (e) {}
+</script>
+</head>
+<body>
+<div class="co-page">
+  <header class="co-head">
+    <a class="brand" href="index.html" aria-label="Zurück zu Gleev"><img class="brand-logo" src="../assets/brand/logo-full.svg" alt="Gleev" width="151" height="26"></a>
+    <div class="co-head-r"><span class="secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>SICHERE KASSE</span><span class="lang-switch" role="group" aria-label="Sprache"><a href="../checkout.html" hreflang="en" lang="en" data-lang="en">EN</a><span aria-hidden="true">|</span><a href="checkout.html" hreflang="de" lang="de" data-lang="de" class="is-current" aria-current="true">DE</a></span></div>
+  </header>
+
+  <div class="co-wrap" id="co-wrap">
+    <main class="co-main">
+      <nav class="crumbs" aria-label="Schritte an der Kasse"><a href="index.html#plans">Warenkorb</a><i>›</i><b>Informationen</b><i>›</i><span>Lieferung</span><i>›</i><span>Zahlung</span></nav>
+
+      <form class="co-form" id="co-form" data-klaviyo-form data-source="checkout_waitlist" novalidate>
+        <section class="co-section">
+          <h2>Kontakt</h2>
+          <div class="fields">
+            <label class="fld full">E-Mail<input type="email" name="email" id="co-email" inputmode="email" autocomplete="email" placeholder="name@beispiel.de" required></label>
+          </div>
+        </section>
+        <section class="co-section">
+          <h2>Ihre Angaben</h2>
+          <div class="fields">
+            <label class="fld">Vorname<input type="text" name="first_name" autocomplete="given-name" required></label>
+            <label class="fld">Nachname<input type="text" name="last_name" autocomplete="family-name"></label>
+          </div>
+        </section>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="form-msg" role="alert" aria-live="polite"></p>
+        <div class="co-actions">
+          <a href="index.html#plans">← Zurück zu den Plänen</a>
+          <button class="btn" type="submit" data-busy="Weiter…">Weiter zur Lieferung</button>
+        </div>
+      </form>
+
+      <div class="co-foot"><a href="legal/terms.html">Nutzungsbedingungen</a><a href="legal/privacy.html">Datenschutz</a></div>
+    </main>
+
+    <aside class="co-summary" id="co-summary" aria-label="Bestellübersicht">
+      <button class="co-toggle" type="button" aria-expanded="false" aria-controls="co-body"><span>Bestellübersicht anzeigen</span><b id="co-toggle-total"></b></button>
+      <h2>Bestellübersicht</h2>
+      <div class="co-body" id="co-body">
+        <div class="co-line">
+          <div class="co-thumb"><img src="../assets/img/gallery/1-hero-70bn-cfu.webp" alt="" width="68" height="68"><span class="q" id="co-qty">1</span></div>
+          <div class="nm"><b>Gleev 360° Biom</b><span id="co-plan"></span><span id="co-renew"></span></div>
+          <span class="pr" id="co-price"></span>
+        </div>
+        <div class="co-sum">
+          <div><span class="muted">Zwischensumme</span><span id="co-sub"></span></div>
+          <div><span class="muted">Lieferung</span><span>Kostenlos</span></div>
+          <div class="total"><span>Gesamt</span><span><small></small><span id="co-total"></span></span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <main class="thanks" id="thanks" hidden aria-live="polite">
+    <div class="tick" aria-hidden="true">✓</div>
+    <h1 tabindex="-1">Vielen Dank für Ihr Interesse. Sie sind etwas früh dran.</h1>
+    <p>Gleev ist noch nicht bestellbar. Wir haben Ihre Angaben gespeichert. Sobald Sie kaufen können, senden wir eine E-Mail an <b id="thanks-email"></b>.</p>
+    <div class="sel"><small>IHRE AUSWAHL</small><b id="thanks-plan"></b><span id="thanks-price"></span></div>
+    <a class="btn btn-inline" href="index.html">Zurück zu Gleev</a>
+  </main>
+</div>
+<script src="../js/lang/de.js?v=20261021181700"></script>
+<script src="../js/config.js?v=20261021181700"></script>
+<script src="../js/data.js?v=20261021181700"></script>
+<script src="../js/klaviyo.js?v=20261021181700"></script>
+<script src="../js/cart.js?v=20261021181700"></script>
+<script src="../js/common.js?v=20261021181700"></script>
+<script src="../js/checkout.js?v=20261021181700"></script>
+</body>
+</html>

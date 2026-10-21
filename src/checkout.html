@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{checkout.title}}</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#17245F">
+<link rel="icon" type="image/svg+xml" href="{{root}}assets/brand/logo-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="{{root}}assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="{{root}}assets/brand/apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="{{root}}assets/fonts/manrope-latin.woff2" crossorigin>
+<link rel="stylesheet" href="{{root}}css/styles.css?v={{v}}">
+<script>document.documentElement.classList.add('js')</script>
+{{analytics}}
+</head>
+<body>
+<div class="co-page">
+  <header class="co-head">
+    <a class="brand" href="index.html" aria-label="{{checkout.1}}"><img class="brand-logo" src="{{root}}assets/brand/logo-full.svg" alt="{{nav.3}}" width="151" height="26"></a>
+    <div class="co-head-r"><span class="secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>{{checkout.2}}</span>{{langswitch}}</div>
+  </header>
+
+  <div class="co-wrap" id="co-wrap">
+    <main class="co-main">
+      <nav class="crumbs" aria-label="{{checkout.3}}"><a href="index.html#plans">{{nav.13}}</a><i>›</i><b>{{checkout.4}}</b><i>›</i><span>{{checkout.delivery}}</span><i>›</i><span>{{checkout.5}}</span></nav>
+
+      <form class="co-form" id="co-form" data-klaviyo-form data-source="checkout_waitlist" novalidate>
+        <section class="co-section">
+          <h2>{{checkout.6}}</h2>
+          <div class="fields">
+            <label class="fld full">{{checkout.7}}<input type="email" name="email" id="co-email" inputmode="email" autocomplete="email" placeholder="{{checkout.8}}" required></label>
+          </div>
+        </section>
+        <section class="co-section">
+          <h2>{{checkout.9}}</h2>
+          <div class="fields">
+            <label class="fld">{{checkout.10}}<input type="text" name="first_name" autocomplete="given-name" required></label>
+            <label class="fld">{{checkout.11}}<input type="text" name="last_name" autocomplete="family-name"></label>
+          </div>
+        </section>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="form-msg" role="alert" aria-live="polite"></p>
+        <div class="co-actions">
+          <a href="index.html#plans">{{checkout.12}}</a>
+          <button class="btn" type="submit" data-busy="{{checkout.busy}}">{{checkout.13}}</button>
+        </div>
+      </form>
+
+      <div class="co-foot"><a href="legal/terms.html">{{footer.2}}</a><a href="legal/privacy.html">{{footer.3}}</a></div>
+    </main>
+
+    <aside class="co-summary" id="co-summary" aria-label="{{checkout.14}}">
+      <button class="co-toggle" type="button" aria-expanded="false" aria-controls="co-body"><span>{{checkout.15}}</span><b id="co-toggle-total"></b></button>
+      <h2>{{checkout.14}}</h2>
+      <div class="co-body" id="co-body">
+        <div class="co-line">
+          <div class="co-thumb"><img src="{{root}}assets/img/gallery/1-hero-70bn-cfu.webp" alt="" width="68" height="68"><span class="q" id="co-qty">1</span></div>
+          <div class="nm"><b>{{checkout.16}}</b><span id="co-plan"></span><span id="co-renew"></span></div>
+          <span class="pr" id="co-price"></span>
+        </div>
+        <div class="co-sum">
+          <div><span class="muted">{{checkout.17}}</span><span id="co-sub"></span></div>
+          <div><span class="muted">{{checkout.delivery}}</span><span>{{checkout.18}}</span></div>
+          <div class="total"><span>{{checkout.19}}</span><span><small>{{checkout.20}}</small><span id="co-total"></span></span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <main class="thanks" id="thanks" hidden aria-live="polite">
+    <div class="tick" aria-hidden="true">✓</div>
+    <h1 tabindex="-1">{{checkout.21}}</h1>
+    <p>{{checkout.22}} <b id="thanks-email"></b>{{checkout.23}}</p>
+    <div class="sel"><small>{{checkout.24}}</small><b id="thanks-plan"></b><span id="thanks-price"></span></div>
+    <a class="btn btn-inline" href="index.html">{{checkout.1}}</a>
+  </main>
+</div>
+<script src="{{root}}js/lang/{{lang}}.js?v={{v}}"></script>
+<script src="{{root}}js/config.js?v={{v}}"></script>
+<script src="{{root}}js/data.js?v={{v}}"></script>
+<script src="{{root}}js/klaviyo.js?v={{v}}"></script>
+<script src="{{root}}js/cart.js?v={{v}}"></script>
+<script src="{{root}}js/common.js?v={{v}}"></script>
+<script src="{{root}}js/checkout.js?v={{v}}"></script>
+</body>
+</html>

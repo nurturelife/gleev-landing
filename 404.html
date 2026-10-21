@@ -3,12 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page not found · Gleev</title>
+<title>Page not found · Seite nicht gefunden · Gleev</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="/assets/brand/logo-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/styles.css?v=20261021181700">
+<script>
+/* Google Analytics 4 (G-86W1T4YRWF). Nothing is sent to Google, and no cookies are set,
+   until the visitor accepts analytics in the cookie banner (js/common.js). */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.gleevLoadAnalytics = function () {
+  if (window.gleevAnalyticsLoaded) return;
+  window.gleevAnalyticsLoaded = true;
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-86W1T4YRWF';
+  document.head.appendChild(s);
+  gtag('js', new Date());
+  gtag('config', 'G-86W1T4YRWF');
+};
+try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadAnalytics(); } catch (e) {}
+</script>
 </head>
 <body>
 <main class="doc" style="text-align:center;align-items:center;min-height:80vh;justify-content:center">
@@ -16,6 +35,10 @@
   <h1>Page not found</h1>
   <p>That page doesn't exist.</p>
   <a class="btn btn-inline" href="/">Back to Gleev</a>
+  <p lang="de" style="margin-top:12px">Diese Seite gibt es nicht.</p>
+  <a class="btn btn-inline" lang="de" href="/de/">Zurück zu Gleev</a>
 </main>
+<script src="/js/lang/en.js?v=20261021181700"></script>
+<script src="/js/common.js?v=20261021181700"></script>
 </body>
 </html>

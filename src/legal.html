@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{page_title}} · Gleev</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="{{root}}assets/brand/logo-icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="{{root}}assets/brand/favicon-32.png">
+<link rel="apple-touch-icon" href="{{root}}assets/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="{{root}}css/styles.css?v={{v}}">
+<script>document.documentElement.classList.add('js')</script>
+{{analytics}}
+</head>
+<body>
+<div class="page">
+  <nav class="nav" aria-label="{{nav.1}}"><a class="brand" href="../index.html" aria-label="{{nav.2}}"><img class="brand-logo" src="{{root}}assets/brand/logo-full.svg" alt="{{nav.3}}" width="151" height="26"></a><div class="nav-right">{{langswitch}}<a href="../index.html">{{legal.back}}</a></div></nav>
+  <main class="doc">
+    <h1>{{page_title}}</h1>
+    <p class="draft-note">{{legal.draft}}</p>
+{{body}}
+  </main>
+</div>
+<script src="{{root}}js/lang/{{lang}}.js?v={{v}}"></script>
+<script src="{{root}}js/common.js?v={{v}}"></script>
+</body>
+</html>

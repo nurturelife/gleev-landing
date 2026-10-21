@@ -1,13 +1,13 @@
 // Checkout page: shows the basket as an order summary, collects name and email,
 // sends the lead to Klaviyo, then shows the "thanks for your interest" confirmation.
 (function () {
-  var G = window.GLEEV, Cart = window.GleevCart, K = window.GleevKlaviyo;
+  var G = window.GLEEV, L = window.GLEEV_L, Cart = window.GleevCart, K = window.GleevKlaviyo;
   var $ = function (s) { return document.querySelector(s); };
 
   var s = Cart.summary();
-  if (!s) { location.replace('index.html#plans'); return; }
+  if (!s) { location.replace(L.paths.plans); return; }
 
-  var price = G.gbp(s.total);
+  var price = G.money(s.total);
   var pl = s.plan;
   $('#co-plan').textContent = pl.name + (s.qty > 1 ? ' × ' + s.qty : '');
   $('#co-renew').textContent = pl.renew;
@@ -23,7 +23,7 @@
     var open = !box.classList.contains('open');
     box.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open);
-    toggle.firstElementChild.textContent = open ? 'Hide order summary' : 'Show order summary';
+    toggle.firstElementChild.textContent = open ? L.ui.hideSummary : L.ui.showSummary;
   });
 
   if (K.knownEmail()) $('#co-email').value = K.knownEmail();
@@ -32,11 +32,11 @@
     var em = e.detail.email;
     K.track('Started Checkout', { plan: s.planId, plan_name: s.name, quantity: s.qty }, s.total, em);
     $('#thanks-email').textContent = em;
-    $('#thanks-plan').textContent = 'Gleev 360° Biom · ' + pl.name + (s.qty > 1 ? ' × ' + s.qty : '');
+    $('#thanks-plan').textContent = L.ui.productName + ' · ' + pl.name + (s.qty > 1 ? ' × ' + s.qty : '');
     $('#thanks-price').textContent = pl.id === 'once' ? price : pl.per;
     $('#co-wrap').hidden = true;
     $('#thanks').hidden = false;
-    document.title = 'Thank you · Gleev';
+    document.title = L.ui.thanksTitle;
     window.scrollTo(0, 0);
     var h = $('#thanks h1'); if (h) h.focus({ preventScroll: true });
   });

@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://gleevhealth.com/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://gleevhealth.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gleevhealth.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://gleevhealth.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gleevhealth.com/"/>
+  </url>
+  <url><loc>https://gleevhealth.com/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gleevhealth.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://gleevhealth.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gleevhealth.com/"/>
+  </url>
 </urlset>

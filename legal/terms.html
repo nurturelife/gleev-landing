@@ -8,11 +8,31 @@
 <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="../css/styles.css?v=20261021174845">
+<link rel="stylesheet" href="../css/styles.css?v=20261021181700">
+<script>document.documentElement.classList.add('js')</script>
+<script>
+/* Google Analytics 4 (G-86W1T4YRWF). Nothing is sent to Google, and no cookies are set,
+   until the visitor accepts analytics in the cookie banner (js/common.js). */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.gleevLoadAnalytics = function () {
+  if (window.gleevAnalyticsLoaded) return;
+  window.gleevAnalyticsLoaded = true;
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-86W1T4YRWF';
+  document.head.appendChild(s);
+  gtag('js', new Date());
+  gtag('config', 'G-86W1T4YRWF');
+};
+try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadAnalytics(); } catch (e) {}
+</script>
 </head>
 <body>
 <div class="page">
-  <nav class="nav" aria-label="Main"><a class="brand" href="../index.html" aria-label="Gleev home"><img class="brand-logo" src="../assets/brand/logo-full.svg" alt="Gleev" width="151" height="26"></a><a href="../index.html">Back to site</a></nav>
+  <nav class="nav" aria-label="Main"><a class="brand" href="../index.html" aria-label="Gleev home"><img class="brand-logo" src="../assets/brand/logo-full.svg" alt="Gleev" width="151" height="26"></a><div class="nav-right"><span class="lang-switch" role="group" aria-label="Language"><a href="terms.html" hreflang="en" lang="en" data-lang="en" class="is-current" aria-current="true">EN</a><span aria-hidden="true">|</span><a href="../de/legal/terms.html" hreflang="de" lang="de" data-lang="de">DE</a></span><a href="../index.html">Back to site</a></div></nav>
   <main class="doc">
     <h1>Terms</h1>
     <p class="draft-note">DRAFT, pending review by the client and their legal adviser. Items highlighted <span class="tbc">[like this]</span> still need to be confirmed. Last updated: 21 October 2026.</p>
@@ -41,5 +61,7 @@
     <p>We may update these terms and will change the date above when we do.</p>
   </main>
 </div>
+<script src="../js/lang/en.js?v=20261021181700"></script>
+<script src="../js/common.js?v=20261021181700"></script>
 </body>
 </html>

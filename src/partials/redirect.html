@@ -1,0 +1,12 @@
+<script>
+/* First visit to the English home page: German-language browsers go to /de/.
+   A choice made with the EN | DE switch is remembered and always wins. */
+(function () {
+  try {
+    var saved = localStorage.getItem('gleev.lang');
+    var lang = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+    var want = saved || (lang.indexOf('de') === 0 ? 'de' : 'en');
+    if (want === 'de') location.replace('de/' + location.search + location.hash);
+  } catch (e) {}
+})();
+</script>

@@ -13,7 +13,7 @@
   function planOption(p) {
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'plan-opt'; b.setAttribute('role', 'radio'); b.dataset.plan = p.id;
-    b.innerHTML = (p.rec ? '<span class="badge">SAVE 25%</span>' : '')
+    b.innerHTML = (p.rec ? '<span class="badge">' + window.GLEEV_L.ui.saveBadge + '</span>' : '')
       + '<span class="radio"><i></i></span>'
       + '<span class="mid"><b>' + p.name + '</b><span>' + p.sub + '</span></span>'
       + '<span class="end"><b>' + p.day + '</b><span>' + priceLine(p) + '</span></span>';

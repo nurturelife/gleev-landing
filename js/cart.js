@@ -2,7 +2,7 @@
 (function () {
   var KEY = 'gleev.cart.v1';
   var BASE = (document.currentScript && document.currentScript.src || '').replace(/js\/cart\.js.*$/, '');
-  var G = window.GLEEV;
+  var G = window.GLEEV, L = window.GLEEV_L, U = L.ui;
   var listeners = [];
   var drawer, scrim, lastFocus;
 
@@ -46,7 +46,7 @@
     drawer = el('aside', 'drawer');
     drawer.setAttribute('role', 'dialog');
     drawer.setAttribute('aria-modal', 'true');
-    drawer.setAttribute('aria-label', 'Your basket');
+    drawer.setAttribute('aria-label', U.basket);
     drawer.setAttribute('aria-hidden', 'true');
     document.body.appendChild(scrim);
     document.body.appendChild(drawer);
@@ -79,22 +79,22 @@
     if (!drawer) return;
     var body;
     if (!s) {
-      body = '<div class="drawer-body"><div class="empty"><span>Your basket is empty.</span><a class="btn btn-inline" href="' + BASE + 'index.html#plans" data-act="shop">Choose your plan</a></div></div>';
+      body = '<div class="drawer-body"><div class="empty"><span>' + U.empty + '</span><a class="btn btn-inline" href="' + L.paths.plans + '" data-act="shop">' + U.choosePlan + '</a></div></div>';
     } else {
       var p = s.plan;
       var qty = p.id === 'once'
-        ? '<div class="qty"><button type="button" data-act="dec" aria-label="Decrease quantity">−</button><span aria-live="polite">' + s.qty + '</span><button type="button" data-act="inc" aria-label="Increase quantity">+</button></div>'
+        ? '<div class="qty"><button type="button" data-act="dec" aria-label="' + U.qtyDec + '">−</button><span aria-live="polite">' + s.qty + '</span><button type="button" data-act="inc" aria-label="' + U.qtyInc + '">+</button></div>'
         : '<span></span>';
       body = '<div class="drawer-body">'
         + '<div class="cart-line"><img src="' + BASE + 'assets/img/gallery/1-hero-70bn-cfu.webp" alt="" width="76" height="76">'
-        + '<div class="info"><b>Gleev 360° Biom</b><span>' + p.name + '</span><span>' + p.renew + '</span>'
-        + '<div class="ctl">' + qty + '<b>' + G.gbp(s.total) + '</b></div>'
-        + '<button class="link-btn" type="button" data-act="remove" style="align-self:flex-start">Remove</button></div></div>'
+        + '<div class="info"><b>' + U.productName + '</b><span>' + p.name + '</span><span>' + p.renew + '</span>'
+        + '<div class="ctl">' + qty + '<b>' + G.money(s.total) + '</b></div>'
+        + '<button class="link-btn" type="button" data-act="remove" style="align-self:flex-start">' + U.remove + '</button></div></div>'
         + '</div>'
-        + '<div class="drawer-foot"><div class="sum"><div><span>Subtotal</span><span>' + G.gbp(s.total) + '</span></div><div><span>Delivery</span><span>Free</span></div><div class="total"><span>Total</span><span>' + G.gbp(s.total) + '</span></div></div>'
-        + '<a class="btn" href="' + BASE + 'checkout.html">Checkout</a></div>';
+        + '<div class="drawer-foot"><div class="sum"><div><span>' + U.subtotal + '</span><span>' + G.money(s.total) + '</span></div><div><span>' + U.delivery + '</span><span>' + U.free + '</span></div><div class="total"><span>' + U.total + '</span><span>' + G.money(s.total) + '</span></div></div>'
+        + '<a class="btn" href="' + L.paths.checkout + '">' + U.checkout + '</a></div>';
     }
-    drawer.innerHTML = '<div class="drawer-head"><b>Your basket</b><button class="icon-btn" type="button" data-act="close" aria-label="Close basket">×</button></div>' + body;
+    drawer.innerHTML = '<div class="drawer-head"><b>' + U.basket + '</b><button class="icon-btn" type="button" data-act="close" aria-label="' + U.closeBasket + '">×</button></div>' + body;
   }
 
   function open() {

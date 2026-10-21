@@ -3,14 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+/* First visit to the English home page: German-language browsers go to /de/.
+   A choice made with the EN | DE switch is remembered and always wins. */
+(function () {
+  try {
+    var saved = localStorage.getItem('gleev.lang');
+    var lang = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
+    var want = saved || (lang.indexOf('de') === 0 ? 'de' : 'en');
+    if (want === 'de') location.replace('de/' + location.search + location.hash);
+  } catch (e) {}
+})();
+</script>
 <title>Gleev 360° Biom. The daily gut system built to arrive.</title>
 <meta name="description" content="Two capsules a day. 70 billion live cultures across eight named strains, a clinically studied postbiotic and a prebiotic, in a delayed-release capsule built to get past your stomach.">
 <meta name="theme-color" content="#17245F">
 <link rel="canonical" href="https://gleevhealth.com/">
+<link rel="alternate" hreflang="en" href="https://gleevhealth.com/">
+<link rel="alternate" hreflang="de" href="https://gleevhealth.com/de/">
+<link rel="alternate" hreflang="x-default" href="https://gleevhealth.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gleev 360° Biom. The daily gut system built to arrive.">
 <meta property="og:description" content="Four jobs, one capsule. 70 billion live cultures across eight named strains, a postbiotic and a prebiotic.">
 <meta property="og:url" content="https://gleevhealth.com/">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="de_DE">
 <meta property="og:image" content="https://gleevhealth.com/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,8 +41,27 @@
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 <link rel="preload" as="image" href="assets/img/gallery/1-hero-70bn-cfu.webp" type="image/webp">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin.woff2" crossorigin>
-<link rel="stylesheet" href="css/styles.css?v=20261021174845">
+<link rel="stylesheet" href="css/styles.css?v=20261021181700">
 <script>document.documentElement.classList.add('js')</script>
+<script>
+/* Google Analytics 4 (G-86W1T4YRWF). Nothing is sent to Google, and no cookies are set,
+   until the visitor accepts analytics in the cookie banner (js/common.js). */
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+window.gleevLoadAnalytics = function () {
+  if (window.gleevAnalyticsLoaded) return;
+  window.gleevAnalyticsLoaded = true;
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-86W1T4YRWF';
+  document.head.appendChild(s);
+  gtag('js', new Date());
+  gtag('config', 'G-86W1T4YRWF');
+};
+try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadAnalytics(); } catch (e) {}
+</script>
 </head>
 <body>
 <div class="page" id="top">
@@ -62,14 +98,14 @@
         <button class="thumb" role="tab" aria-selected="true" aria-label="Gleev jar, 70 billion CFU"><img src="assets/img/gallery/1-hero-70bn-cfu.webp" alt="" width="136" height="136"></button>
         <button class="thumb" role="tab" aria-selected="false" aria-label="The Gleev box"><img src="assets/img/gallery/2-box-open.webp" alt="" width="136" height="136" loading="lazy"></button>
         <button class="thumb contain" role="tab" aria-selected="false" aria-label="The label: every strain, every amount"><img src="assets/img/gallery/3-nutrition-label.webp" alt="" width="136" height="136" loading="lazy"></button>
-        <button class="thumb contain" role="tab" aria-selected="false" aria-label="Sustainable refills"><img src="assets/img/gallery/4-sustainable-refills.webp" alt="" width="136" height="136" loading="lazy"></button>
+        <button class="thumb pos-top" role="tab" aria-selected="false" aria-label="Sustainable refills"><img src="assets/img/gallery/4-sustainable-refills.webp" alt="" width="136" height="136" loading="lazy"></button>
         <button class="thumb" role="tab" aria-selected="false" aria-label="Two capsules a day"><img src="assets/img/gallery/5-capsules-in-hand.webp" alt="" width="136" height="136" loading="lazy"></button>
       </div>
       <div class="gallery-main" id="shop-main">
         <figure class="is-on"><img src="assets/img/gallery/1-hero-70bn-cfu.webp" alt="Gleev 360° Biom jar on a blue background with 70 billion CFU and clinically proven callouts" width="1254" height="1254" fetchpriority="high"></figure>
         <figure><img src="assets/img/gallery/2-box-open.webp" alt="An open blue Gleev box holding a jar" width="1024" height="1024" loading="lazy"></figure>
         <figure class="contain"><img src="assets/img/gallery/3-nutrition-label.webp" alt="The Gleev nutritional information panel listing every strain and amount" width="1000" height="1000" loading="lazy"></figure>
-        <figure class="contain"><img src="assets/img/gallery/4-sustainable-refills.webp" alt="Sustainable refills: a glass jar and refill pouches with a monthly or three-month subscription" width="922" height="1152" loading="lazy"></figure>
+        <figure class="pos-top"><img src="assets/img/gallery/4-sustainable-refills.webp" alt="Sustainable refills: a glass jar and refill pouches with a monthly or three-month subscription" width="922" height="1152" loading="lazy"></figure>
         <figure><img src="assets/img/gallery/5-capsules-in-hand.webp" alt="Two Gleev capsules resting in an open hand" width="1024" height="1024" loading="lazy"></figure>
         <a class="see-inside" href="#inside"><span>+</span>See what's inside</a>
       </div>
@@ -402,7 +438,7 @@
     <div class="footer-grid">
       <div class="col"><img class="brand-logo brand-logo-lg" src="assets/brand/logo-full.svg" alt="Gleev" width="174" height="30"><span class="muted">Beyond probiotics. Gut health, done properly.</span></div>
       <div class="col"><a href="#problem">The problem</a><a href="#science">Science</a><a href="#journey">Delivery</a><a href="#how">How it works</a><a href="#inside">Inside the capsule</a><a href="#compare">Compare</a><a href="#plans">Plans</a><a href="#faq">FAQ</a></div>
-      <div class="col"><a href="legal/terms.html">Terms</a><a href="legal/privacy.html">Privacy</a><a href="mailto:hi@gleevhealth.com">hi@gleevhealth.com</a></div>
+      <div class="col"><a href="legal/terms.html">Terms</a><a href="legal/privacy.html">Privacy</a><a href="mailto:hi@gleevhealth.com">hi@gleevhealth.com</a><button type="button" class="linklike" data-cookie-settings>Cookie settings</button><span class="lang-switch" role="group" aria-label="Language"><a href="./" hreflang="en" lang="en" data-lang="en" class="is-current" aria-current="true">EN</a><span aria-hidden="true">|</span><a href="de/" hreflang="de" lang="de" data-lang="de">DE</a></span></div>
       <div class="col nl">
         <b>One idea a month: a strain, a mechanism, an explainer.</b>
         <form class="subscribe" data-klaviyo-form="" data-source="footer" novalidate="">
@@ -418,10 +454,12 @@
 </footer>
 
 </div>
-<script src="js/config.js?v=20261021174845"></script>
-<script src="js/data.js?v=20261021174845"></script>
-<script src="js/klaviyo.js?v=20261021174845"></script>
-<script src="js/cart.js?v=20261021174845"></script>
-<script src="js/app.js?v=20261021174845"></script>
+<script src="js/lang/en.js?v=20261021181700"></script>
+<script src="js/config.js?v=20261021181700"></script>
+<script src="js/data.js?v=20261021181700"></script>
+<script src="js/klaviyo.js?v=20261021181700"></script>
+<script src="js/cart.js?v=20261021181700"></script>
+<script src="js/common.js?v=20261021181700"></script>
+<script src="js/app.js?v=20261021181700"></script>
 </body>
 </html>
