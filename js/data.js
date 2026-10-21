@@ -25,7 +25,7 @@
 
   window.GLEEV = {
     PLANS: PLANS,
-    DEFAULT_PLAN: 'monthly',
+    DEFAULT_PLAN: 'three',
     gbp: gbp,
     plan: function (id) { return PLANS.filter(function (p) { return p.id === id; })[0] || PLANS[1]; }
   };

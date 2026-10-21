@@ -86,7 +86,7 @@
         ? '<div class="qty"><button type="button" data-act="dec" aria-label="Decrease quantity">−</button><span aria-live="polite">' + s.qty + '</span><button type="button" data-act="inc" aria-label="Increase quantity">+</button></div>'
         : '<span></span>';
       body = '<div class="drawer-body">'
-        + '<div class="cart-line"><img src="' + BASE + 'assets/img/gallery-1-hero.webp" alt="" width="76" height="76">'
+        + '<div class="cart-line"><img src="' + BASE + 'assets/img/gallery/1-hero-70bn-cfu.webp" alt="" width="76" height="76">'
         + '<div class="info"><b>Gleev 360° Biom</b><span>' + p.name + '</span><span>' + p.renew + '</span>'
         + '<div class="ctl">' + qty + '<b>' + G.gbp(s.total) + '</b></div>'
         + '<button class="link-btn" type="button" data-act="remove" style="align-self:flex-start">Remove</button></div></div>'

@@ -2,3 +2,9 @@
 node_modules/
 .claude/
 .idea/
+
+# local working files, not part of the site
+new_images/
+Gleev 360 Biom.html
+index.js
+package.json
