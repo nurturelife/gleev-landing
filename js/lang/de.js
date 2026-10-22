@@ -22,7 +22,7 @@ window.GLEEV_L = (function () {
     },
     consent: {
       title: 'Cookies',
-      text: 'Wir möchten Analyse-Cookies (Google Analytics) einsetzen, um zu verstehen, wie die Website genutzt wird. Sie bleiben ausgeschaltet, solange Sie nicht zustimmen.',
+      text: 'Wir möchten Analyse-Cookies (Google Analytics und PostHog) einsetzen, um zu verstehen, wie die Website genutzt wird, einschließlich Heatmaps zu Klicks und Scrollverhalten. Sie bleiben ausgeschaltet, solange Sie nicht zustimmen.',
       privacy: 'Datenschutzerklärung', accept: 'Analyse zulassen', decline: 'Ablehnen'
     },
     plans: [

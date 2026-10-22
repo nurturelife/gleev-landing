@@ -43,7 +43,7 @@ The build warns if a German key is missing (it then falls back to English) and f
 
 ## Analytics and cookies
 
-Google Analytics 4 (`G-86W1T4YRWF`) is in every page `<head>`, but it **only loads after the visitor accepts** the cookie banner (`js/common.js`). Declining keeps it off and removes the cookies. "Cookie settings" in the footer lets people change their mind. The privacy pages describe this.
+Google Analytics 4 (`G-86W1T4YRWF`) and PostHog (EU cloud, heatmaps only, session recording off) are in every page `<head>` (`src/partials/analytics.html`), but they **only load after the visitor accepts** the cookie banner (`js/common.js`). The newsletter and checkout forms carry `ph-no-capture` so PostHog ignores them. Declining keeps it off and removes the cookies. "Cookie settings" in the footer lets people change their mind. The privacy pages describe this.
 
 ## Klaviyo
 
@@ -51,7 +51,7 @@ Google Analytics 4 (`G-86W1T4YRWF`) is in every page `<head>`, but it **only loa
 
 ## Content still to supply
 
-The home page has no internal placeholders left. Still to supply: the Impressum details (director name(s), phone number, VAT number, consumer-dispute statement), highlighted with `tbc` in `src/legal/impressum.de.html`. The eight customer reviews are sample content to replace with real reviews.
+The legal pages are complete but still need approval by the client and their legal adviser. The eight customer reviews are sample content to replace with real reviews.
 
 ## Run locally
 

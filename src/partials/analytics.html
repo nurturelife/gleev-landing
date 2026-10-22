@@ -1,6 +1,7 @@
 <script>
-/* Google Analytics 4 (G-86W1T4YRWF). Nothing is sent to Google, and no cookies are set,
-   until the visitor accepts analytics in the cookie banner (js/common.js). */
+/* Google Analytics 4 (G-86W1T4YRWF) and PostHog (heatmaps, EU cloud). Nothing is loaded or sent,
+   and no cookies are set, until the visitor accepts analytics in the cookie banner (js/common.js).
+   PostHog session recording is switched off on purpose. */
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
@@ -14,6 +15,28 @@ window.gleevLoadAnalytics = function () {
   document.head.appendChild(s);
   gtag('js', new Date());
   gtag('config', 'G-86W1T4YRWF');
+  window.gleevLoadPosthog();
+};
+window.gleevLoadPosthog = function () {
+  if (window.gleevPosthogLoaded) return;
+  window.gleevPosthogLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.crossOrigin = 'anonymous';
+  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.onload = function () {
+    if (!window.posthog || !window.posthog.init) return;
+    window.posthog.init('phc_r2jWw32obzpbB3pELYhVRasr8sH6srL8qpkzhCg2irnP', {
+      api_host: 'https://eu.i.posthog.com',
+      ui_host: 'https://eu.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_heatmaps: true,
+      autocapture: true,
+      disable_session_recording: true
+    });
+  };
+  document.head.appendChild(s);
 };
 try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadAnalytics(); } catch (e) {}
 </script>

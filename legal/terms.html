@@ -8,11 +8,12 @@
 <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="../css/styles.css?v=20261022092252">
+<link rel="stylesheet" href="../css/styles.css?v=20261022095257">
 <script>document.documentElement.classList.add('js')</script>
 <script>
-/* Google Analytics 4 (G-86W1T4YRWF). Nothing is sent to Google, and no cookies are set,
-   until the visitor accepts analytics in the cookie banner (js/common.js). */
+/* Google Analytics 4 (G-86W1T4YRWF) and PostHog (heatmaps, EU cloud). Nothing is loaded or sent,
+   and no cookies are set, until the visitor accepts analytics in the cookie banner (js/common.js).
+   PostHog session recording is switched off on purpose. */
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
@@ -26,6 +27,28 @@ window.gleevLoadAnalytics = function () {
   document.head.appendChild(s);
   gtag('js', new Date());
   gtag('config', 'G-86W1T4YRWF');
+  window.gleevLoadPosthog();
+};
+window.gleevLoadPosthog = function () {
+  if (window.gleevPosthogLoaded) return;
+  window.gleevPosthogLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.crossOrigin = 'anonymous';
+  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.onload = function () {
+    if (!window.posthog || !window.posthog.init) return;
+    window.posthog.init('phc_r2jWw32obzpbB3pELYhVRasr8sH6srL8qpkzhCg2irnP', {
+      api_host: 'https://eu.i.posthog.com',
+      ui_host: 'https://eu.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_heatmaps: true,
+      autocapture: true,
+      disable_session_recording: true
+    });
+  };
+  document.head.appendChild(s);
 };
 try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadAnalytics(); } catch (e) {}
 </script>
@@ -35,7 +58,6 @@ try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadA
   <nav class="nav" aria-label="Main"><a class="brand" href="../index.html" aria-label="Gleev home"><img class="brand-logo" src="../assets/brand/logo-full.svg" alt="Gleev" width="151" height="26"></a><div class="nav-right"><span class="lang-switch" role="group" aria-label="Language"><a href="terms.html" hreflang="en" lang="en" data-lang="en" class="is-current" aria-current="true">EN</a><span aria-hidden="true">|</span><a href="../de/legal/terms.html" hreflang="de" lang="de" data-lang="de">DE</a></span><a href="../index.html">Back to site</a></div></nav>
   <main class="doc">
     <h1>Terms</h1>
-    <p class="draft-note">DRAFT, pending review by the client and their legal adviser. Items highlighted <span class="tbc">[like this]</span> still need to be confirmed. Last updated: 21 October 2026.</p>
     <h2>About this website</h2>
     <p>This website is operated by Core and Coat Limited, a company registered in England and Wales (company number 17287859), whose registered office is at Second Floor Offices, 25-29 Queen Street, Maidenhead, Berkshire SL6 1NB. Contact: <a href="mailto:hi@gleevhealth.com">hi@gleevhealth.com</a>. By using the site you accept these terms.</p>
 
@@ -61,7 +83,7 @@ try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadA
     <p>We may update these terms and will change the date above when we do.</p>
   </main>
 </div>
-<script src="../js/lang/en.js?v=20261022092252"></script>
-<script src="../js/common.js?v=20261022092252"></script>
+<script src="../js/lang/en.js?v=20261022095257"></script>
+<script src="../js/common.js?v=20261022095257"></script>
 </body>
 </html>

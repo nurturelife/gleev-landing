@@ -21,7 +21,7 @@ window.GLEEV_L = (function () {
     },
     consent: {
       title: 'Cookies',
-      text: 'We would like to use analytics cookies (Google Analytics) to understand how the site is used. They stay off unless you accept.',
+      text: 'We would like to use analytics cookies (Google Analytics and PostHog) to understand how the site is used, including heatmaps of clicks and scrolling. They stay off unless you accept.',
       privacy: 'Privacy policy', accept: 'Accept analytics', decline: 'Decline'
     },
     plans: [

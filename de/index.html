@@ -29,11 +29,12 @@
 <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
 <link rel="preload" as="image" href="../assets/img/gallery/1-hero-70bn-cfu.webp" type="image/webp">
 <link rel="preload" as="font" type="font/woff2" href="../assets/fonts/manrope-latin.woff2" crossorigin>
-<link rel="stylesheet" href="../css/styles.css?v=20261022092252">
+<link rel="stylesheet" href="../css/styles.css?v=20261022095257">
 <script>document.documentElement.classList.add('js')</script>
 <script>
-/* Google Analytics 4 (G-86W1T4YRWF). Nothing is sent to Google, and no cookies are set,
-   until the visitor accepts analytics in the cookie banner (js/common.js). */
+/* Google Analytics 4 (G-86W1T4YRWF) and PostHog (heatmaps, EU cloud). Nothing is loaded or sent,
+   and no cookies are set, until the visitor accepts analytics in the cookie banner (js/common.js).
+   PostHog session recording is switched off on purpose. */
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
@@ -47,6 +48,28 @@ window.gleevLoadAnalytics = function () {
   document.head.appendChild(s);
   gtag('js', new Date());
   gtag('config', 'G-86W1T4YRWF');
+  window.gleevLoadPosthog();
+};
+window.gleevLoadPosthog = function () {
+  if (window.gleevPosthogLoaded) return;
+  window.gleevPosthogLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.crossOrigin = 'anonymous';
+  s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+  s.onload = function () {
+    if (!window.posthog || !window.posthog.init) return;
+    window.posthog.init('phc_r2jWw32obzpbB3pELYhVRasr8sH6srL8qpkzhCg2irnP', {
+      api_host: 'https://eu.i.posthog.com',
+      ui_host: 'https://eu.posthog.com',
+      person_profiles: 'identified_only',
+      capture_pageview: true,
+      capture_heatmaps: true,
+      autocapture: true,
+      disable_session_recording: true
+    });
+  };
+  document.head.appendChild(s);
 };
 try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadAnalytics(); } catch (e) {}
 </script>
@@ -429,7 +452,7 @@ try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadA
       <div class="col"><a href="legal/terms.html">Nutzungsbedingungen</a><a href="legal/privacy.html">Datenschutz</a><a href="legal/impressum.html">Impressum</a><a href="mailto:hi@gleevhealth.com">hi@gleevhealth.com</a><button type="button" class="linklike" data-cookie-settings>Cookie-Einstellungen</button><span class="lang-switch" role="group" aria-label="Sprache"><a href="../" hreflang="en" lang="en" data-lang="en">EN</a><span aria-hidden="true">|</span><a href="./" hreflang="de" lang="de" data-lang="de" class="is-current" aria-current="true">DE</a></span></div>
       <div class="col nl">
         <b>Eine Idee pro Monat: ein Stamm, ein Mechanismus, eine Erklärung.</b>
-        <form class="subscribe" data-klaviyo-form="" data-source="footer" novalidate="">
+        <form class="subscribe ph-no-capture" data-klaviyo-form="" data-source="footer" novalidate="">
           <div class="field"><input type="email" name="email" placeholder="E-Mail-Adresse" autocomplete="email" aria-label="E-Mail-Adresse" required=""><button type="submit">Anmelden</button></div>
           <label class="consent"><input type="checkbox" name="consent" required=""><span>Ich bin einverstanden, E-Mails von Gleev zu erhalten, und kann mich jederzeit abmelden. Siehe unsere <a href="legal/privacy.html"><u>Datenschutzerklärung</u></a>.</span></label>
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -442,12 +465,12 @@ try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadA
 </footer>
 
 </div>
-<script src="../js/lang/de.js?v=20261022092252"></script>
-<script src="../js/config.js?v=20261022092252"></script>
-<script src="../js/data.js?v=20261022092252"></script>
-<script src="../js/klaviyo.js?v=20261022092252"></script>
-<script src="../js/cart.js?v=20261022092252"></script>
-<script src="../js/common.js?v=20261022092252"></script>
-<script src="../js/app.js?v=20261022092252"></script>
+<script src="../js/lang/de.js?v=20261022095257"></script>
+<script src="../js/config.js?v=20261022095257"></script>
+<script src="../js/data.js?v=20261022095257"></script>
+<script src="../js/klaviyo.js?v=20261022095257"></script>
+<script src="../js/cart.js?v=20261022095257"></script>
+<script src="../js/common.js?v=20261022095257"></script>
+<script src="../js/app.js?v=20261022095257"></script>
 </body>
 </html>
