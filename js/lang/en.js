@@ -15,8 +15,8 @@ window.GLEEV_L = (function () {
       showSummary: 'Show order summary', hideSummary: 'Hide order summary', thanksTitle: 'Thank you · Gleev'
     },
     msg: {
-      email: 'Please enter a valid email address.', first: 'Please enter your first name.',
-      consent: 'Please tick the box to agree to receive emails.', sending: 'Sending…',
+      email: 'Please enter a valid email address.', first: 'Please enter your first name.', last: 'Please enter your last name.',
+      consent: 'Please tick the box to agree.', sending: 'Sending…',
       thanks: "Thanks! You're on the list.", error: 'Something went wrong. Please try again in a moment.'
     },
     consent: {

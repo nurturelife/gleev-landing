@@ -3,13 +3,11 @@
 (function () {
   var C = window.GLEEV_CONFIG || {};
   var REVISION = '2024-10-15';
-  var EMAIL_KEY = 'gleev.email';
+  // The visitor's email is never kept in browser storage; this removes any left over from earlier versions.
+  try { localStorage.removeItem('gleev.email'); } catch (e) {}
 
   function isLive() { return !C.DRY_RUN && !!C.KLAVIYO_COMPANY_ID && !!C.KLAVIYO_LIST_ID; }
   function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(v || '').trim()); }
-
-  function knownEmail() { try { return localStorage.getItem(EMAIL_KEY) || ''; } catch (e) { return ''; } }
-  function rememberEmail(email) { try { localStorage.setItem(EMAIL_KEY, email); } catch (e) {} }
 
   function post(path, body) {
     if (!isLive()) {
@@ -36,7 +34,6 @@
   function subscribe(email, opts) {
     opts = opts || {};
     var properties = Object.assign({ source: opts.source || 'website', page: location.pathname, language: (window.GLEEV_L && window.GLEEV_L.lang) || document.documentElement.lang || 'en' }, opts.properties || {});
-    rememberEmail(email);
     return post('subscriptions', {
       data: {
         type: 'subscription',
@@ -51,7 +48,6 @@
 
   // Events need a known profile, so they only fire once we have an email.
   function track(name, props, value, email) {
-    email = email || knownEmail();
     if (!C.TRACK_EVENTS || !email) return Promise.resolve();
     return post('events', {
       data: {
@@ -85,12 +81,13 @@
         if (botLike) { say(M.thanks, 'ok'); return; }
         if (!validEmail(email)) { say(M.email, 'err'); form.elements.email.focus(); return; }
         if (form.elements.first_name && !first) { say(M.first, 'err'); form.elements.first_name.focus(); return; }
+        if (form.elements.last_name && form.elements.last_name.required && !last) { say(M.last, 'err'); form.elements.last_name.focus(); return; }
         if (consent && !consent.checked) { say(M.consent, 'err'); return; }
         var label = btn ? btn.textContent : '';
         if (btn) { btn.disabled = true; btn.textContent = btn.dataset.busy || M.sending; }
         say('');
         var plan = window.GleevCart && window.GleevCart.summary();
-        subscribe(email, { source: form.dataset.source, firstName: first, lastName: last, properties: plan ? { plan: plan.planId, plan_name: plan.name, quantity: plan.qty, plan_total: plan.total } : {} })
+        subscribe(email, { source: form.dataset.source, firstName: first, lastName: last, properties: Object.assign({ newsletter_optin: form.dataset.source === 'footer' || !!(form.elements.newsletter && form.elements.newsletter.checked) }, plan ? { plan: plan.planId, plan_name: plan.name, quantity: plan.qty, plan_total: plan.total } : {}) })
           .then(function () {
             say(M.thanks, 'ok');
             form.dispatchEvent(new CustomEvent('gleev:subscribed', { bubbles: true, detail: { email: email } }));
@@ -102,6 +99,6 @@
     });
   }
 
-  window.GleevKlaviyo = { subscribe: subscribe, track: track, validEmail: validEmail, knownEmail: knownEmail, rememberEmail: rememberEmail, isLive: isLive };
+  window.GleevKlaviyo = { subscribe: subscribe, track: track, validEmail: validEmail, isLive: isLive };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindForms); else bindForms();
 })();

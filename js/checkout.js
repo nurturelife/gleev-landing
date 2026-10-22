@@ -26,10 +26,9 @@
     toggle.firstElementChild.textContent = open ? L.ui.hideSummary : L.ui.showSummary;
   });
 
-  if (K.knownEmail()) $('#co-email').value = K.knownEmail();
-
   $('#co-form').addEventListener('gleev:subscribed', function (e) {
     var em = e.detail.email;
+    $('#co-form').reset();
     K.track('Started Checkout', { plan: s.planId, plan_name: s.name, quantity: s.qty }, s.total, em);
     $('#thanks-email').textContent = em;
     $('#thanks-plan').textContent = L.ui.productName + ' · ' + pl.name + (s.qty > 1 ? ' × ' + s.qty : '');

@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin.woff2" crossorigin>
-<link rel="stylesheet" href="css/styles.css?v=20261022095257">
+<link rel="stylesheet" href="css/styles.css?v=20261022103434">
 <script>document.documentElement.classList.add('js')</script>
 <script>
 /* Google Analytics 4 (G-86W1T4YRWF) and PostHog (heatmaps, EU cloud). Nothing is loaded or sent,
@@ -77,9 +77,14 @@ try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadA
           <h2>Your details</h2>
           <div class="fields">
             <label class="fld">First name<input type="text" name="first_name" autocomplete="given-name" required></label>
-            <label class="fld">Last name<input type="text" name="last_name" autocomplete="family-name"></label>
+            <label class="fld">Last name<input type="text" name="last_name" autocomplete="family-name" required></label>
           </div>
         </section>
+        <div class="co-consents">
+          <label class="consent"><input type="checkbox" name="consent" required><span>I would like to be notified by email when Gleev becomes available.</span></label>
+          <label class="consent"><input type="checkbox" name="newsletter"><span>I would also like to receive Gleev news, product updates and offers by email.</span></label>
+        </div>
+        <p class="co-notice">This is a non-binding registration and not an order. No payment is taken.</p>
         <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="form-msg" role="alert" aria-live="polite"></p>
         <div class="co-actions">
@@ -111,18 +116,18 @@ try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadA
 
   <main class="thanks" id="thanks" hidden aria-live="polite">
     <div class="tick" aria-hidden="true">✓</div>
-    <h1 tabindex="-1">Thanks for your interest. You're a bit early.</h1>
-    <p>Gleev isn't available to order just yet. We've saved your details and we'll email <b id="thanks-email"></b> as soon as you can buy.</p>
+    <h1 tabindex="-1">Thanks for registering your interest.</h1>
+    <p>We've saved your details and we'll email <b id="thanks-email"></b> when Gleev becomes available.</p>
     <div class="sel"><small>YOUR SELECTION</small><b id="thanks-plan"></b><span id="thanks-price"></span></div>
     <a class="btn btn-inline" href="index.html">Back to Gleev</a>
   </main>
 </div>
-<script src="js/lang/en.js?v=20261022095257"></script>
-<script src="js/config.js?v=20261022095257"></script>
-<script src="js/data.js?v=20261022095257"></script>
-<script src="js/klaviyo.js?v=20261022095257"></script>
-<script src="js/cart.js?v=20261022095257"></script>
-<script src="js/common.js?v=20261022095257"></script>
-<script src="js/checkout.js?v=20261022095257"></script>
+<script src="js/lang/en.js?v=20261022103434"></script>
+<script src="js/config.js?v=20261022103434"></script>
+<script src="js/data.js?v=20261022103434"></script>
+<script src="js/klaviyo.js?v=20261022103434"></script>
+<script src="js/cart.js?v=20261022103434"></script>
+<script src="js/common.js?v=20261022103434"></script>
+<script src="js/checkout.js?v=20261022103434"></script>
 </body>
 </html>

@@ -36,9 +36,14 @@
           <h2>{{checkout.9}}</h2>
           <div class="fields">
             <label class="fld">{{checkout.10}}<input type="text" name="first_name" autocomplete="given-name" required></label>
-            <label class="fld">{{checkout.11}}<input type="text" name="last_name" autocomplete="family-name"></label>
+            <label class="fld">{{checkout.11}}<input type="text" name="last_name" autocomplete="family-name" required></label>
           </div>
         </section>
+        <div class="co-consents">
+          <label class="consent"><input type="checkbox" name="consent" required><span>{{checkout.avail}}</span></label>
+          <label class="consent"><input type="checkbox" name="newsletter"><span>{{checkout.news}}</span></label>
+        </div>
+        <p class="co-notice">{{checkout.notice}}</p>
         <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="form-msg" role="alert" aria-live="polite"></p>
         <div class="co-actions">

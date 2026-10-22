@@ -16,8 +16,8 @@ window.GLEEV_L = (function () {
       showSummary: 'Bestellübersicht anzeigen', hideSummary: 'Bestellübersicht ausblenden', thanksTitle: 'Vielen Dank · Gleev'
     },
     msg: {
-      email: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', first: 'Bitte geben Sie Ihren Vornamen ein.',
-      consent: 'Bitte setzen Sie den Haken, um E-Mails zu erhalten.', sending: 'Wird gesendet…',
+      email: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', first: 'Bitte geben Sie Ihren Vornamen ein.', last: 'Bitte geben Sie Ihren Nachnamen ein.',
+      consent: 'Bitte setzen Sie den Haken, um fortzufahren.', sending: 'Wird gesendet…',
       thanks: 'Vielen Dank! Sie stehen auf der Liste.', error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es gleich noch einmal.'
     },
     consent: {
