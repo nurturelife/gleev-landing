@@ -43,7 +43,7 @@ window.GLEEV_L = (function () {
         tag: 'EINMALIG', save: '',
         lines: ['Kein Abo', 'Nie reduziert'],
         renew: 'Einmalkauf. Keine Verlängerung', flex: '',
-        cta: 'Einmal kaufen', ctaLong: 'Einmal kaufen · ' + m(59.99) }
+        cta: 'Jetzt kaufen', ctaLong: 'Jetzt kaufen · ' + m(59.99) }
     ]
   };
 })();

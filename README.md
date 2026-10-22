@@ -51,7 +51,7 @@ Google Analytics 4 (`G-86W1T4YRWF`) is in every page `<head>`, but it **only loa
 
 ## Content still to supply
 
-Search for `PLACEHOLDER` / `PLATZHALTER` in the strings and for `tbc` in `src/legal/`: Tim's credentials and quote, the euro price note, company details, retention periods and Impressum details. Pictures still missing: the routine section.
+The home page has no internal placeholders left. Still to supply: the Impressum details (director name(s), phone number, VAT number, consumer-dispute statement), highlighted with `tbc` in `src/legal/impressum.de.html`. The eight customer reviews are sample content to replace with real reviews.
 
 ## Run locally
 

@@ -86,7 +86,7 @@
         ? '<div class="qty"><button type="button" data-act="dec" aria-label="' + U.qtyDec + '">−</button><span aria-live="polite">' + s.qty + '</span><button type="button" data-act="inc" aria-label="' + U.qtyInc + '">+</button></div>'
         : '<span></span>';
       body = '<div class="drawer-body">'
-        + '<div class="cart-line"><img src="' + BASE + 'assets/img/gallery/1-hero-70bn-cfu.webp" alt="" width="76" height="76">'
+        + '<div class="cart-line"><img src="' + BASE + 'assets/img/product-jar-thumb.webp" alt="" width="76" height="76">'
         + '<div class="info"><b>' + U.productName + '</b><span>' + p.name + '</span><span>' + p.renew + '</span>'
         + '<div class="ctl">' + qty + '<b>' + G.money(s.total) + '</b></div>'
         + '<button class="link-btn" type="button" data-act="remove" style="align-self:flex-start">' + U.remove + '</button></div></div>'

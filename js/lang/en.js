@@ -42,7 +42,7 @@ window.GLEEV_L = (function () {
         tag: 'ONE-TIME', save: '',
         lines: ['No subscription', 'Never discounted'],
         renew: 'One-time purchase. Nothing renews', flex: '',
-        cta: 'Buy once', ctaLong: 'Buy once · ' + m(59.99) }
+        cta: 'Buy now', ctaLong: 'Buy now · ' + m(59.99) }
     ]
   };
 })();
