@@ -90,6 +90,7 @@
         subscribe(email, { source: form.dataset.source, firstName: first, lastName: last, properties: Object.assign({ newsletter_optin: form.dataset.source === 'footer' || !!(form.elements.newsletter && form.elements.newsletter.checked) }, plan ? { plan: plan.planId, plan_name: plan.name, quantity: plan.qty, plan_total: plan.total } : {}) })
           .then(function () {
             say(M.thanks, 'ok');
+            try { if (window.fbq) window.fbq('track', 'Lead'); } catch (e) {}
             form.dispatchEvent(new CustomEvent('gleev:subscribed', { bubbles: true, detail: { email: email } }));
             if (form.dataset.source === 'footer') form.reset();
           })

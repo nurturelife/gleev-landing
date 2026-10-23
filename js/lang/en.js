@@ -21,8 +21,8 @@ window.GLEEV_L = (function () {
     },
     consent: {
       title: 'Cookies',
-      text: 'We would like to use analytics cookies (Google Analytics and PostHog) to understand how the site is used, including heatmaps of clicks and scrolling. They stay off unless you accept.',
-      privacy: 'Privacy policy', accept: 'Accept analytics', decline: 'Decline'
+      text: 'We would like to use analytics and advertising cookies (Google Analytics, PostHog and the Meta Pixel) to understand how the site is used, including heatmaps of clicks and scrolling, and to measure our advertising. They stay off unless you accept.',
+      privacy: 'Privacy policy', accept: 'Accept', decline: 'Decline'
     },
     plans: [
       { id: 'three', name: 'Three-month plan', price: m(37.49), perShort: '/ month',

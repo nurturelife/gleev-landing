@@ -8,11 +8,11 @@
 <link rel="icon" type="image/svg+xml" href="../assets/brand/logo-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="../css/styles.css?v=20261022103434">
+<link rel="stylesheet" href="../css/styles.css?v=20261023074655">
 <script>document.documentElement.classList.add('js')</script>
 <script>
-/* Google Analytics 4 (G-86W1T4YRWF) and PostHog (heatmaps, EU cloud). Nothing is loaded or sent,
-   and no cookies are set, until the visitor accepts analytics in the cookie banner (js/common.js).
+/* Google Analytics 4 (G-86W1T4YRWF), PostHog (heatmaps, EU cloud) and the Meta Pixel (2295620701230847).
+   Nothing is loaded or sent, and no cookies are set, until the visitor accepts in the cookie banner (js/common.js).
    PostHog session recording is switched off on purpose. */
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -28,6 +28,14 @@ window.gleevLoadAnalytics = function () {
   gtag('js', new Date());
   gtag('config', 'G-86W1T4YRWF');
   window.gleevLoadPosthog();
+  window.gleevLoadMeta();
+};
+window.gleevLoadMeta = function () {
+  if (window.gleevMetaLoaded) return;
+  window.gleevMetaLoaded = true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2295620701230847');
+  fbq('track', 'PageView');
 };
 window.gleevLoadPosthog = function () {
   if (window.gleevPosthogLoaded) return;
@@ -85,7 +93,7 @@ try { if (localStorage.getItem('gleev.consent') === 'granted') window.gleevLoadA
     <p>We may update these terms from time to time. Any updates will be published on this page with a revised "Last updated" date. Changes will not affect statutory rights or existing contractual rights.</p>
   </main>
 </div>
-<script src="../js/lang/en.js?v=20261022103434"></script>
-<script src="../js/common.js?v=20261022103434"></script>
+<script src="../js/lang/en.js?v=20261023074655"></script>
+<script src="../js/common.js?v=20261023074655"></script>
 </body>
 </html>

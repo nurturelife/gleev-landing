@@ -22,8 +22,8 @@ window.GLEEV_L = (function () {
     },
     consent: {
       title: 'Cookies',
-      text: 'Wir möchten Analyse-Cookies (Google Analytics und PostHog) einsetzen, um zu verstehen, wie die Website genutzt wird, einschließlich Heatmaps zu Klicks und Scrollverhalten. Sie bleiben ausgeschaltet, solange Sie nicht zustimmen.',
-      privacy: 'Datenschutzerklärung', accept: 'Analyse zulassen', decline: 'Ablehnen'
+      text: 'Wir möchten Analyse- und Werbe-Cookies (Google Analytics, PostHog und das Meta-Pixel) einsetzen, um zu verstehen, wie die Website genutzt wird, einschließlich Heatmaps zu Klicks und Scrollverhalten, und um unsere Werbung zu messen. Sie bleiben ausgeschaltet, solange Sie nicht zustimmen.',
+      privacy: 'Datenschutzerklärung', accept: 'Zulassen', decline: 'Ablehnen'
     },
     plans: [
       { id: 'three', name: 'Drei-Monats-Plan', price: m(37.49), perShort: '/ Monat',
