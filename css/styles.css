@@ -490,8 +490,6 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
 .doc h3{font-size:16px;margin-top:4px;margin-bottom:-8px}
 .doc-updated{font-size:14px;color:var(--mid);margin-top:-6px}
 .co-notice{font-size:13px;line-height:1.5;color:var(--mid)}
-.co-consents{display:flex;flex-direction:column;gap:10px}
-.co-consents .consent{font-size:13px}
 
 /* ===== Language switch, cookie banner ===== */
 .lang-switch{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;align-self:flex-start}
