@@ -169,12 +169,12 @@ h2{font-weight:700;text-wrap:pretty;overflow-wrap:break-word}
 .science-side{display:flex;flex-direction:column;gap:12px;min-width:0}
 .person-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
 .person-img{position:relative;align-self:stretch;min-height:220px;border-radius:16px;overflow:hidden;background:var(--mist)}
-.person-card{border-radius:16px;background:var(--navy);color:var(--frost);padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
-.person-card .who{display:flex;flex-direction:column;gap:4px}
-.person-card .k{font-size:11px;letter-spacing:.12em;color:var(--silver)}
+.person-card{border-radius:16px;background:var(--navy);color:var(--frost);padding:26px 25px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.person-card .who{display:flex;flex-direction:column;gap:16px}
+.person-card .k{font-size:13px;letter-spacing:.12em;color:var(--water)}
 .person-card .n{font-size:clamp(20px,1.7vw,26px);font-weight:700;letter-spacing:-.02em;line-height:1.05}
 .person-card .r{font-size:13px;color:var(--water)}
-.person-card .mono{font-size:13px;color:var(--silver);line-height:1.5}
+.person-card .mono{font-size:16px;color:var(--frost);line-height:1.65}
 .person-card .quote{border-top:1px solid rgba(201,205,214,.3);padding-top:10px}
 .person-card .tag{font-size:12px;color:var(--water)}
 .findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;align-items:start}
